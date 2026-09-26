@@ -1244,3 +1244,29 @@ ul, ol { list-style: none; }
 /* Nosotros: corte limpio con el hero, fondo claro plano */
 .about.about--light { background: var(--paper); padding-top: clamp(64px, 8vw, 112px); }
 
+
+/* Tablet y celular: cada tarjeta pisa por completo a la anterior (sin bordes asomando) */
+@media (max-width: 1024px) {
+  .svc:not(.svc--mini) .svc__item { top: 84px; }
+  .js .svc:not(.svc--mini) .svc__item.reveal, .svc:not(.svc--mini) .svc__item { transform: none; filter: none; }
+}
+@media (max-width: 760px) {
+  .svc:not(.svc--mini) .svc__item { top: 76px; }
+}
+
+/* Pasos: ícono en un cuadrado redondeado (como el botón de menú) en lugar del número */
+.hstep__num--ico, .hstep.is-active .hstep__num--ico {
+  width: 48px; height: 48px; border-radius: 12px; margin-top: 2px;
+  display: grid; place-items: center; font-size: 0; letter-spacing: 0;
+}
+.hstep__num--ico { background: #fff; box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
+.hstep.is-active .hstep__num--ico { background: var(--grad); color: #fff; box-shadow: 0 8px 18px -10px rgba(1,102,252,.7); }
+.hstep__num--ico svg { width: 24px; height: 24px; stroke-width: 1.5; }
+.how__steps::before, .how__steps::after { left: 23px; }
+.hstep { grid-template-columns: 48px 1fr; }
+@media (max-width: 760px) {
+  .hstep__num--ico, .hstep.is-active .hstep__num--ico { width: 44px; height: 44px; margin-top: 0; }
+  .hstep__num--ico svg { width: 22px; height: 22px; }
+  .how__steps::before, .how__steps::after { left: 21px; }
+  .hstep { grid-template-columns: 44px 1fr; }
+}
