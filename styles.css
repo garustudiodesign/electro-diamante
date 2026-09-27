@@ -1270,3 +1270,71 @@ ul, ol { list-style: none; }
   .how__steps::before, .how__steps::after { left: 21px; }
   .hstep { grid-template-columns: 44px 1fr; }
 }
+
+/* Tablet y celular: borde de color en la tarjeta activa mientras se scrollea */
+.svc__item { transition: box-shadow .45s var(--ease), background-color .45s var(--ease); }
+@media (max-width: 1024px) {
+  .section--ink .svc:not(.svc--mini) .svc__item.is-live {
+    box-shadow: inset 0 0 0 1px rgba(92,157,255,.55), 0 -12px 30px -16px rgba(0,0,0,.8);
+  }
+  .svc--light:not(.svc--mini) .svc__item.is-live {
+    box-shadow: inset 0 0 0 1px rgba(1,102,252,.5), 0 -10px 30px -18px rgba(14,14,12,.35);
+  }
+}
+
+/* Toda la tarjeta es clickeable: el enlace "Ver más" se estira sobre la tarjeta */
+@media (min-width: 1025px) { .svc__item { position: relative; } }
+.svc--mini .svc__item { position: relative; }
+.svc__item { cursor: pointer; }
+.svc__item .svc__btn { position: static; will-change: auto; }
+.svc__item .svc__btn, .svc__item .svc__btn:active { scale: none; transform: none; }
+.svc__item .svc__btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.svc__item .svc__btn:focus-visible { outline: none; }
+.svc__item:has(.svc__btn:focus-visible) { outline: 2px solid var(--volt); outline-offset: 3px; }
+.svc__item:active { scale: .99; transition: scale .15s var(--ease); }
+/* Desktop: al pasar por la tarjeta, el botón también se colorea */
+.svc__item:hover .svc__btn, .section--ink .svc__item:hover .svc__btn, .svc--light .svc__item:hover .svc__btn {
+  background: var(--grad); background-size: 180% 100%; background-position: 100% 0;
+  color: #fff; box-shadow: 0 10px 24px -14px rgba(1,102,252,.85);
+}
+
+/* ---------- Hero: indicador de scroll ---------- */
+.scroll-cue {
+  --cue-base: rgba(243,242,238,.28);
+  --cue-dur: 3.2s;
+  position: absolute; left: 50%; bottom: clamp(20px, 4vh, 40px); z-index: 2;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center;
+  color: var(--paper); transition: opacity .4s var(--ease);
+}
+.scroll-cue:focus-visible { outline: 2px solid var(--volt-soft); outline-offset: 8px; border-radius: 12px; }
+.scroll-cue.is-hidden { opacity: 0; pointer-events: none; }
+.scroll-cue svg { width: 26px; height: auto; overflow: visible; }
+.scroll-cue__base { fill: none; stroke: var(--cue-base); stroke-width: 2.5; }
+.scroll-cue__trazo {
+  fill: none; stroke: url(#cueGrad); stroke-width: 2.5; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: cue-draw var(--cue-dur) cubic-bezier(.65,0,.35,1) infinite;
+}
+.scroll-cue__punto {
+  fill: var(--volt); transform-box: fill-box; transform-origin: center;
+  filter: drop-shadow(0 0 4px rgba(1,102,252,.8));
+  animation: cue-drop var(--cue-dur) cubic-bezier(.65,0,.35,1) infinite;
+}
+@keyframes cue-drop {
+  0%, 10% { transform: translateY(0); opacity: 1; }
+  55%, 88% { transform: translateY(36px); opacity: 1; }
+  96% { transform: translateY(36px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes cue-draw {
+  0%, 10% { stroke-dashoffset: 1; opacity: 1; }
+  55%, 88% { stroke-dashoffset: 0; opacity: 1; }
+  96% { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue__trazo, .scroll-cue__punto { animation: none; }
+  .scroll-cue__trazo { stroke-dashoffset: 0; }
+  .scroll-cue__punto { transform: translateY(36px); }
+}
