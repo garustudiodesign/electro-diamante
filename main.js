@@ -382,6 +382,37 @@
     });
   }
 
+
+  /* ---------- Selector segmentado (Monofásicos / Trifásicos) ---------- */
+  function initSeg() {
+    $all(".seg").forEach(function (seg) {
+      var btns = $all(".seg__btn", seg), thumb = seg.querySelector(".seg__thumb");
+      function place(b) {
+        if (!thumb || !b) return;
+        thumb.style.width = b.offsetWidth + "px";
+        thumb.style.transform = "translateX(" + (b.offsetLeft - 5) + "px)";
+      }
+      function select(b) {
+        btns.forEach(function (x) {
+          var on = x === b;
+          x.classList.toggle("is-active", on);
+          x.setAttribute("aria-selected", on ? "true" : "false");
+          var panel = document.getElementById(x.getAttribute("aria-controls"));
+          if (panel) {
+            panel.hidden = !on;
+            if (on) $all(".reveal", panel).forEach(function (r) { r.classList.add("is-in"); });
+          }
+        });
+        place(b);
+      }
+      btns.forEach(function (b) { b.addEventListener("click", function () { select(b); }); });
+      var place0 = function () { place(seg.querySelector(".seg__btn.is-active")); };
+      window.addEventListener("resize", place0); window.addEventListener("load", place0);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(place0);
+      place0();
+    });
+  }
+
   /* ---------- Nosotros: contador animado del +30 ---------- */
   function initCountUp() {
     $all("[data-count-to]").forEach(function (el) {
@@ -532,6 +563,7 @@
     safe(initGrid, "grid");
     safe(initMagnetic, "magnetic");
     safe(initScrollCue, "scrollCue");
+    safe(initSeg, "seg");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);

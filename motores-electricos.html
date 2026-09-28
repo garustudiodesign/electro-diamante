@@ -10,14 +10,14 @@
   <meta property="og:description" content="Bobinado, reparación integral y mantenimiento de motores monofásicos y trifásicos.">
   <meta property="og:type" content="website">
   <script>document.documentElement.className+=" js";</script>
-  <link rel="icon" href="assets/img/favicon.svg?v=20260928" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20260928">
+  <link rel="icon" href="assets/img/favicon.svg?v=20260929" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=20260929">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260928">
-  <script src="config.js?v=20260928" defer></script>
-  <script src="main.js?v=20260928" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260929">
+  <script src="config.js?v=20260929" defer></script>
+  <script src="main.js?v=20260929" defer></script>
 </head>
 <body data-page-sec="servicios">
   <header class="nav" id="top">
@@ -56,8 +56,8 @@
         <div class="hero__foot">
           <p class="hero__lead reveal">Bobinado, reparación integral y mantenimiento de motores monofásicos y trifásicos.</p>
           <div class="hero__cta reveal">
-            <a class="btn btn--volt btn--wa magnetic" data-wa="Hola, quiero consultar por la reparación de un motor eléctrico." href="https://wa.me/5491120945864?text=Hola%2C%20quiero%20consultar%20por%20la%20reparaci%C3%B3n%20de%20un%20motor%20el%C3%A9ctrico." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg> Consultar por WhatsApp</a>
-            <a class="btn btn--outline magnetic" href="index.html#servicios">Volver a servicios</a>
+            <a class="btn btn--volt btn--wa" data-wa="Hola, quiero consultar por la reparación de un motor eléctrico." href="https://wa.me/5491120945864?text=Hola%2C%20quiero%20consultar%20por%20la%20reparaci%C3%B3n%20de%20un%20motor%20el%C3%A9ctrico." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg> Consultar por WhatsApp</a>
+            <a class="btn btn--outline" href="index.html#servicios">Volver a servicios</a>
           </div>
         </div>
       </div>
@@ -68,28 +68,50 @@
         <div class="center-head">
           <p class="label pill pill--plain reveal"><span class="pill__txt">Detalle</span></p>
           <h2 class="h2 h2--center reveal">Qué hacemos con tu motor</h2>
-          <div class="tags reveal"><span>Monofásicos</span><span>Trifásicos</span></div>
+          <div class="seg reveal" role="tablist" aria-label="Tipo de motor"><span class="seg__thumb" aria-hidden="true"></span><button type="button" class="seg__btn is-active" role="tab" aria-selected="true" aria-controls="panel-0" id="tab-0" data-seg="0">Monofásicos</button><button type="button" class="seg__btn" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1" data-seg="1">Trifásicos</button></div>
         </div>
-        <div class="detail-grid">
+        <div class="detail-grid" id="panel-0" role="tabpanel" aria-labelledby="tab-0" data-panel="0">
           <article class="detail reveal">
-            <span class="detail__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z"/></svg></span>
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
             <h3>Diagnóstico en banco de pruebas</h3>
-            <p>Identificamos la falla exacta antes de pasarte el presupuesto.</p>
+            <p>Medimos bobinados y aislación para encontrar la falla exacta antes del presupuesto.</p>
           </article>
           <article class="detail reveal">
-            <span class="detail__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z"/></svg></span>
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
+            <h3>Capacitores de arranque y marcha</h3>
+            <p>Probamos y reemplazamos capacitores para que el motor arranque con fuerza.</p>
+          </article>
+          <article class="detail reveal">
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
             <h3>Rebobinado</h3>
-            <p>Rebobinamos bobinados dañados o quemados para que el motor vuelva a rendir.</p>
+            <p>Rebobinamos bobinados quemados o dañados con alambre esmaltado de primera calidad.</p>
           </article>
           <article class="detail reveal">
-            <span class="detail__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z"/></svg></span>
-            <h3>Cambio de componentes</h3>
-            <p>Reemplazamos rodamientos, capacitores y piezas desgastadas.</p>
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
+            <h3>Rodamientos y centrífugo</h3>
+            <p>Cambiamos rodamientos y revisamos el interruptor centrífugo para evitar recalentamientos.</p>
+          </article>
+        </div>
+        <div class="detail-grid" id="panel-1" role="tabpanel" aria-labelledby="tab-1" data-panel="1" hidden>
+          <article class="detail reveal">
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
+            <h3>Medición de aislación y consumo</h3>
+            <p>Controlamos aislación, consumo por fase y temperatura para un diagnóstico preciso.</p>
           </article>
           <article class="detail reveal">
-            <span class="detail__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z"/></svg></span>
-            <h3>Mantenimiento</h3>
-            <p>Limpieza, ajuste y control general para prolongar la vida útil del equipo.</p>
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
+            <h3>Rebobinado trifásico</h3>
+            <p>Rebobinamos respetando los datos originales de potencia, tensión y velocidad.</p>
+          </article>
+          <article class="detail reveal">
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
+            <h3>Rodamientos y alineación</h3>
+            <p>Reemplazamos rodamientos y verificamos alineación para reducir ruidos y vibraciones.</p>
+          </article>
+          <article class="detail reveal">
+            <span class="detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg></span>
+            <h3>Mantenimiento preventivo</h3>
+            <p>Limpieza, ajuste y control general para prolongar la vida útil del motor.</p>
           </article>
         </div>
       </div>
@@ -145,16 +167,6 @@
       </div>
     </section>
 
-    <section class="contact cta-band" id="contacto">
-      <div class="wrap">
-        <p class="label pill pill--plain label--light reveal"><span class="pill__txt">Contacto</span></p>
-        <h2 class="contact__title reveal">¿Tenés un motor para reparar?<br><span>Escribinos.</span></h2>
-        <div class="cta-band__actions reveal">
-          <a class="btn btn--volt btn--wa btn--big magnetic" data-wa="Hola, quiero consultar por la reparación de un motor eléctrico." href="https://wa.me/5491120945864?text=Hola%2C%20quiero%20consultar%20por%20la%20reparaci%C3%B3n%20de%20un%20motor%20el%C3%A9ctrico." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg> Escribir por WhatsApp</a>
-          <a class="btn btn--outline btn--big magnetic" href="index.html">Volver al inicio</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer footer--grid">
@@ -165,6 +177,11 @@
           <svg class="brand__logo" viewBox="0 0 19 13" fill="currentColor" aria-hidden="true"><path d="M17.3795 0.756C17.7715 0.508 18.2035 0.256 18.6755 0V0.0360003C18.6595 0.796 18.6555 1.596 18.6635 2.436C18.6715 3.268 18.6755 4.1 18.6755 4.932V10.152C17.9315 10.584 17.1915 11.008 16.4555 11.424C15.7275 11.848 14.9915 12.276 14.2475 12.708C13.7035 12.38 13.1555 12.056 12.6035 11.736C12.0595 11.416 11.5155 11.104 10.9715 10.8C10.7715 10.688 10.5795 10.58 10.3955 10.476C10.2195 10.372 10.0395 10.264 9.85547 10.152V5.076L10.9355 4.428C11.4955 4.1 12.0515 3.784 12.6035 3.48C13.1635 3.168 13.7235 2.86 14.2835 2.556C14.7875 2.844 15.2915 3.14 15.7955 3.444C16.3075 3.74 16.8355 4.032 17.3795 4.32V0.756ZM14.2475 4.032C13.7195 4.336 13.2035 4.636 12.6995 4.932C12.1955 5.228 11.6795 5.528 11.1515 5.832V9.396C11.6795 9.7 12.1995 10.004 12.7115 10.308C13.2315 10.612 13.7555 10.908 14.2835 11.196C14.7875 10.892 15.2955 10.592 15.8075 10.296C16.3275 10 16.8515 9.7 17.3795 9.396V5.832C16.8515 5.528 16.3275 5.224 15.8075 4.92C15.2955 4.616 14.7755 4.32 14.2475 4.032Z"/><path d="M8.784 4.88402C8.056 5.31602 7.328 5.74402 6.6 6.16802C5.872 6.58402 5.136 7.00802 4.392 7.44002C4.192 7.31202 3.984 7.18802 3.768 7.06802C3.56 6.94002 3.348 6.81202 3.132 6.68402C3.636 6.38002 4.144 6.08002 4.656 5.78402C5.176 5.48802 5.688 5.18802 6.192 4.88402C5.904 4.70002 5.608 4.52802 5.304 4.36802C5.008 4.20002 4.716 4.03602 4.428 3.87601C3.9 4.16402 3.376 4.46002 2.856 4.76402C2.344 5.06802 1.824 5.37202 1.296 5.67602V9.24002C1.824 9.54402 2.344 9.84402 2.856 10.14C3.376 10.436 3.888 10.736 4.392 11.04C4.92 10.736 5.436 10.436 5.94 10.14C6.444 9.84402 6.96 9.54402 7.488 9.24002L8.784 9.99602C8.056 10.428 7.328 10.852 6.6 11.268C5.872 11.684 5.136 12.1 4.392 12.516C3.664 12.1 2.936 11.68 2.208 11.256C1.48 10.832 0.744 10.412 0 9.99602V4.92002C0.616 4.56002 1.248 4.19602 1.896 3.82802C2.544 3.45202 3.184 3.08402 3.816 2.72402C3.904 2.66802 3.992 2.61202 4.08 2.55602C4.176 2.49202 4.268 2.44002 4.356 2.40002C4.412 2.38402 4.468 2.39601 4.524 2.43601C4.588 2.46801 4.664 2.50401 4.752 2.54401C5.424 2.94401 6.1 3.34002 6.78 3.73202C7.468 4.11602 8.136 4.50002 8.784 4.88402Z"/></svg>
         </a>
         <p class="footer__desc">Soluciones eléctricas integrales para la industria y el hogar.</p>
+        <ul class="footer__contact">
+          <li data-if="telefonoVisible"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg><a data-wa target="_blank" rel="noopener" href="https://wa.me/5491120945864"><span data-phone>+54 911 2094-5864</span></a></li>
+          <li data-if="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/></svg><a data-email href="mailto:electro.diamante@hotmail.com">electro.diamante@hotmail.com</a></li>
+          <li data-if="direccion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg><span><span data-address>Coronel D'Elia 2765</span>, <span data-locality>Valentín Alsina, Lanús</span></span></li>
+        </ul>
       </div>
       <nav class="footer__col" aria-label="Sitio">
         <h4 class="footer__title">Sitio</h4>
@@ -176,11 +193,10 @@
         </ul>
       </nav>
       <div class="footer__col">
-        <h4 class="footer__title">Contacto</h4>
+        <h4 class="footer__title">Horario</h4>
         <ul>
-          <li data-if="direccion"><span data-address>Coronel D'Elia 2765</span></li>
-          <li data-if="localidad"><span data-locality>Valentín Alsina, Lanús</span></li>
-          <li data-if="telefonoVisible"><a data-wa target="_blank" rel="noopener" href="https://wa.me/5491120945864"><span data-phone>+54 911 2094-5864</span></a></li>
+          <li>Lun a Vie: 8 a 13 hs y 14 a 18 hs</li>
+          <li>Sábados: 8 a 13 hs</li>
         </ul>
       </div>
     </div>
@@ -194,7 +210,7 @@
 
   <!-- WhatsApp flotante -->
   <a class="wa-float" data-wa href="https://wa.me/5491120945864?text=Hola%20Electro%20Diamante%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>
   </a>
 
 </body>

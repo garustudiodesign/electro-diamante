@@ -1835,3 +1835,107 @@ button, input, select, textarea { font-family: inherit; }
 /* La reseña larga va en una tarjeta más ancha, así todas quedan más bajas */
 .imc__card--wide { width: 480px; max-width: 480px; }
 @media (max-width: 760px) { .imc__card--wide { width: 320px; max-width: 320px; } }
+/* Fix: cada carrusel ocupa solo el ancho de la pantalla (no el de su pista) */
+.imc-rows { grid-template-columns: minmax(0, 1fr); width: 100%; overflow: hidden; }
+.imc-rows > .imc { min-width: 0; width: 100%; }
+
+/* Nosotros · datos en tarjetas (icono en recuadro + cifra + etiqueta) */
+.ab4__stats { gap: 12px; margin-top: 36px; }
+.ab4__stats > .ab4__stat {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0;
+  padding: 18px 20px 20px; border-radius: 18px;
+  background: rgba(255,255,255,.6); box-shadow: inset 0 0 0 1px var(--line);
+  transition: box-shadow .35s var(--ease), transform .35s var(--ease);
+}
+.ab4__stats > .ab4__stat:hover { box-shadow: inset 0 0 0 1px rgba(1,102,252,.35), 0 16px 34px -26px rgba(14,14,12,.3); transform: translateY(-2px); }
+.ab4__ico {
+  width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 22px;
+  color: var(--volt); background: rgba(1,102,252,.08); box-shadow: inset 0 0 0 1px rgba(1,102,252,.16);
+}
+.ab4__ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ab4__stat .ab4__num { font-size: clamp(28px, 2.4vw, 38px); }
+.ab4__stat .ab4__lbl { margin-top: 8px; font-size: 14px; line-height: 1.35; }
+@media (max-width: 760px) {
+  .ab4__stats { gap: 8px; }
+  .ab4__stats > .ab4__stat { padding: 14px 12px 16px; border-radius: 14px; }
+  .ab4__ico { width: 34px; height: 34px; border-radius: 10px; margin-bottom: 16px; }
+  .ab4__ico svg { width: 18px; height: 18px; }
+  .ab4__stat .ab4__num { font-size: clamp(20px, 6vw, 26px); }
+  .ab4__stat .ab4__lbl { font-size: 12px; }
+}
+
+/* ============================================================
+   ÍCONOS: todo el sitio usa Tabler Icons (outline, trazo uniforme)
+   ============================================================ */
+.btn svg, .wa-float svg { fill: none; stroke: currentColor; }
+.btn--wa svg { stroke-width: 2; }
+.wa-float svg { width: 28px; height: 28px; stroke-width: 1.8; }
+.imc__stars span { display: inline-flex; }
+.imc__stars svg { width: 15px; height: 15px; fill: currentColor; stroke: none; }
+.pill__bolt { fill: none; }
+
+/* "Ver servicio / Ver productos": texto a la izquierda, flecha → gris en la otra punta */
+.svc:not(.svc--mini) .svc__btn,
+.svc:not(.svc--mini) .svc__btn:hover,
+.svc:not(.svc--mini) .svc__item:hover .svc__btn,
+.section--ink .svc:not(.svc--mini) .svc__btn,
+.section--ink .svc:not(.svc--mini) .svc__item:hover .svc__btn,
+.svc--light:not(.svc--mini) .svc__btn,
+.svc--light:not(.svc--mini) .svc__item:hover .svc__btn {
+  display: flex; width: 100%; justify-content: space-between; align-items: center;
+  background: none; box-shadow: none;
+}
+.svc__btn .svc__arrow { width: 22px; height: 22px; stroke-width: 1.75; color: rgba(243,242,238,.4); transition: transform .35s var(--ease), color .35s var(--ease); }
+.svc--light .svc__btn .svc__arrow { color: rgba(14,14,12,.35); }
+.svc__item:hover .svc__arrow, .svc__btn:hover .svc__arrow, .svc__btn:focus-visible .svc__arrow { transform: translateX(4px); color: currentColor; }
+.section--ink .svc__item:hover .svc__arrow { color: var(--volt-soft); }
+.svc--light .svc__item:hover .svc__arrow { color: var(--volt); }
+
+/* Nosotros · tarjetas de datos en modo oscuro, quietas (solo cambia el borde al pasar el mouse) */
+.ab4__stats > .ab4__stat {
+  background: #191916; box-shadow: inset 0 0 0 1px rgba(243,242,238,.1);
+  transform: none; transition: box-shadow .3s var(--ease);
+}
+.ab4__stats > .ab4__stat:hover { transform: none; box-shadow: inset 0 0 0 1px rgba(92,157,255,.55); }
+.ab4__stat .ab4__ico { color: var(--volt-soft); background: rgba(1,102,252,.16); box-shadow: inset 0 0 0 1px rgba(92,157,255,.28); }
+.ab4__stat .ab4__num { color: var(--paper); }
+.ab4__stat .ab4__lbl { color: rgba(243,242,238,.62); }
+
+/* Flecha de "Ver servicio / Ver productos": siempre en el mismo azul del texto, sin cambiar de color */
+.svc__btn .svc__arrow, .svc--light .svc__btn .svc__arrow,
+.svc__item:hover .svc__arrow, .section--ink .svc__item:hover .svc__arrow, .svc--light .svc__item:hover .svc__arrow { color: currentColor; }
+
+/* Footer · contacto con íconos debajo del logo */
+.footer__contact { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.footer__contact li { display: flex; align-items: center; gap: 12px; font-size: 16px; color: rgba(243,242,238,.62); }
+.footer__contact a { color: inherit; transition: color .25s; }
+.footer__contact a:hover { color: var(--volt-soft); }
+.footer__contact svg { width: 20px; height: 20px; flex: none; stroke-width: 1.5; color: rgba(243,242,238,.5); }
+@media (max-width: 760px) { .footer__contact li { font-size: 15px; align-items: flex-start; } }
+/* Footer desktop: descripción alineada con la primera fila de las columnas y en dos líneas */
+@media (min-width: 1025px) {
+  .footer__desc { margin-top: 12px; max-width: 32ch; line-height: 1.6; }
+}
+
+/* Selector segmentado (Monofásicos / Trifásicos) */
+.seg {
+  position: relative; display: inline-flex; gap: 4px; padding: 5px; margin-top: 26px; border-radius: 999px;
+  background: #fff; box-shadow: inset 0 0 0 1px var(--line);
+}
+.seg__thumb {
+  position: absolute; top: 5px; bottom: 5px; left: 5px; width: 0; border-radius: 999px;
+  background: rgba(1,102,252,.1); box-shadow: inset 0 0 0 1px rgba(1,102,252,.18);
+  transition: transform .45s var(--ease), width .45s var(--ease);
+}
+.seg__btn {
+  position: relative; z-index: 1; border: 0; background: none; cursor: pointer;
+  padding: 12px 26px; border-radius: 999px; font-family: var(--sans); font-size: 16px; font-weight: 500;
+  color: var(--muted); transition: color .3s var(--ease);
+}
+.seg__btn:hover { color: var(--ink); }
+.seg__btn.is-active { color: var(--volt); }
+.seg__btn:focus-visible { outline: 2px solid var(--volt); outline-offset: 2px; }
+.center-head .seg { grid-column: 1 / -1; justify-self: center; }
+@media (max-width: 760px) { .seg__btn { padding: 10px 18px; font-size: 15px; } }
+/* Botones quietos en todo el sitio: sin desplazamiento ni achique (solo cambio de color en hover) */
+.btn, .btn:hover, .btn:active { transform: none !important; scale: none !important; }

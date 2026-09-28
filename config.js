@@ -16,7 +16,7 @@ window.__ED__ = {
   horario: "",
 
   // Email de contacto (dejalo vacío "" si no querés mostrarlo)
-  email: "",
+  email: "electro.diamante@hotmail.com",
 
   // Mensaje que aparece escrito al abrir WhatsApp
   mensaje: "Hola Electro Diamante, quiero hacer una consulta."
