@@ -28,6 +28,9 @@
       $all(sel).forEach(function (el) { el.textContent = map[sel]; });
     });
     $all("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    // Teléfono (llamada): arma el link tel: con los dígitos del número visible
+    var telDigits = String(CFG.telefono || CFG.telefonoVisible || "").replace(/\D/g, "");
+    if (telDigits) $all("[data-tel]").forEach(function (el) { el.href = "tel:+" + telDigits; });
     if (CFG.email) $all("[data-email]").forEach(function (el) { el.textContent = CFG.email; el.href = "mailto:" + CFG.email; });
     // Oculta del footer los datos que queden vacíos en config.js
     $all("[data-if]").forEach(function (li) { if (!String(CFG[li.getAttribute("data-if")] || "").trim()) li.hidden = true; });
@@ -45,7 +48,7 @@
       nav.classList.toggle("is-scrolled", y > 24);
       // El menú toma la versión oscura cuando pasa por encima de una sección oscura
       var probe = nav.offsetHeight / 2;
-      var onDark = $all(".hero--dark, .section--ink, .contact, .footer").some(function (sec) {
+      var onDark = $all(".hero--dark, .section--ink:not(.tone-light), .tone-dark, .contact, .footer").some(function (sec) {
         var r = sec.getBoundingClientRect();
         return r.top <= probe && r.bottom > probe;
       });
@@ -416,16 +419,18 @@
   /* ---------- Nosotros: contador animado del +30 ---------- */
   function initCountUp() {
     $all("[data-count-to]").forEach(function (el) {
-      var to = parseInt(el.getAttribute("data-count-to"), 10) || 0;
+      var to = parseFloat(el.getAttribute("data-count-to")) || 0;
+      var dec = parseInt(el.getAttribute("data-dec"), 10) || 0;
+      var pre = el.getAttribute("data-prefix") || "";
       if (!("IntersectionObserver" in window)) return;
       var done = false;
       new IntersectionObserver(function (en, obs) {
         if (done || !en[0].isIntersecting) return;
         done = true; obs.disconnect();
-        var t0 = performance.now(), dur = 1400;
+        var t0 = performance.now(), dur = parseInt(el.getAttribute("data-dur"), 10) || 1400;
         (function tick(t) {
           var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(to * e);
+          el.textContent = pre + (dec ? (to * e).toFixed(dec) : Math.round(to * e));
           if (p < 1) requestAnimationFrame(tick);
         })(t0);
       }, { threshold: 0.4 }).observe(el);

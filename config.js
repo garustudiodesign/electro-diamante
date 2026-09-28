@@ -7,8 +7,10 @@ window.__ED__ = {
   // Ejemplo Argentina (Buenos Aires): 5491123456789
   whatsapp: "5491120945864",
 
-  // Cómo se muestra el número en la web
-  telefonoVisible: "+54 911 2094-5864",
+  // Teléfono fijo del local para llamadas (footer). "telefono" es el número que se marca:
+  // código de país + área + número, SIN espacios ni guiones. Un fijo de CABA/GBA NO lleva el 9.
+  telefono: "+541120945864",
+  telefonoVisible: "(011) 2094-5864",
 
   // Datos del pie de página. Si alguno queda vacío "", no se muestra.
   direccion: "Coronel D'Elia 2765",
