@@ -1770,3 +1770,6 @@ p, li, dd, .footer__col li, .footer__col a, .footer__desc, .hero__lead, .hero--d
 button, input, select, textarea { font-family: inherit; }
 .mm__toggle { font-family: var(--sans); font-weight: 500; }
 .footer__title { font-family: var(--sans); font-weight: 500; }
+/* Footer · contacto: dirección en un solo bloque y nada vacío ocupa lugar */
+.footer__col li.footer__addr { line-height: 1.6; }
+[hidden] { display: none !important; }

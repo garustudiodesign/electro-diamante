@@ -22,12 +22,15 @@
         a.href = "https://wa.me/" + num + (msg ? "?text=" + encodeURIComponent(msg) : "");
       });
     }
-    var map = { "[data-phone]": CFG.telefonoVisible, "[data-address]": CFG.direccion, "[data-hours]": CFG.horario };
+    var map = { "[data-phone]": CFG.telefonoVisible, "[data-address]": CFG.direccion, "[data-locality]": CFG.localidad, "[data-hours]": CFG.horario };
     Object.keys(map).forEach(function (sel) {
       if (!map[sel]) return;
       $all(sel).forEach(function (el) { el.textContent = map[sel]; });
     });
     $all("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    if (CFG.email) $all("[data-email]").forEach(function (el) { el.textContent = CFG.email; el.href = "mailto:" + CFG.email; });
+    // Oculta del footer los datos que queden vacíos en config.js
+    $all("[data-if]").forEach(function (li) { if (!String(CFG[li.getAttribute("data-if")] || "").trim()) li.hidden = true; });
   }
 
   /* ---------- Nav ---------- */
@@ -84,8 +87,11 @@
     });
     $all(".nav__links a, .mmenu a").forEach(function (a) { a.addEventListener("click", close); });
     // "Inicio" vuelve arriba de todo
-    $all(".mmenu [data-top]").forEach(function (a) {
-      a.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+    $all(".nav__links [data-top], .mmenu [data-top]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" });
+        if (history.replaceState) history.replaceState(null, "", location.pathname + location.search);
+      });
     });
     // Desplegables de Servicios y Productos
     $all(".mm__toggle").forEach(function (t) {
@@ -285,17 +291,19 @@
       build();
       var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(build, 150); });
 
-      root.addEventListener("mouseenter", function () { hovered = true; });
-      root.addEventListener("mouseleave", function () { hovered = false; });
+      // Solo con mouse real: en celular un toque no debe dejarlo "trabado" en modo hover
+      root.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") hovered = true; });
+      root.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hovered = false; });
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(root);
       }
-      if (reduce) return;
+      // Si el sistema pide "reducir movimiento" (muy común en celulares), no se frena: va más lento
+      var base = reduce ? 0.45 : 1;
 
       function frame(t) {
         var delta = last ? Math.min(t - last, 64) : 16; last = t;
         // Al pasar el mouse no se frena: baja suavemente al 25% de la velocidad
-        var target = hovered ? 0.25 : 1;
+        var target = (hovered ? 0.25 : 1) * base;
         factor += (target - factor) * Math.min(1, delta / 250);
         if (visible && single > 0) {
           var v = pxs * factor * (delta / 1000);
@@ -332,11 +340,46 @@
           c.style.setProperty("--br", (1 - p * 0.35).toFixed(3));
           c.classList.toggle("is-stacked", p > 0);
         });
+        // Tablet y celular: la tarjeta que está al frente muestra el borde de color (como el hover en desktop)
+        var live = -1;
+        if (mq.matches) {
+          var lim = window.innerHeight * 0.6;
+          cards.forEach(function (c, i) { var r = c.getBoundingClientRect(); if (r.top <= lim && r.bottom > 80) live = i; });
+        }
+        cards.forEach(function (c, i) { c.classList.toggle("is-live", i === live); });
+      });
+    }
+    // Todas las tarjetas de un grupo con la misma altura, así la de arriba tapa por completo a la de abajo
+    function equalize() {
+      groups.forEach(function (cards) {
+        cards.forEach(function (c) { c.style.minHeight = ""; });
+        if (!mq.matches) return;
+        var h = cards.reduce(function (m, c) { return Math.max(m, c.offsetHeight); }, 0);
+        cards.forEach(function (c) { c.style.minHeight = h + "px"; });
       });
     }
     window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", function () { equalize(); update(); });
+    window.addEventListener("load", function () { equalize(); update(); });
+    equalize();
     update();
+  }
+
+
+  /* ---------- Hero: indicador de scroll ---------- */
+  function initScrollCue() {
+    var el = document.querySelector(".scroll-cue");
+    if (!el) return;
+    function upd() { el.classList.toggle("is-hidden", window.scrollY > 60); }
+    window.addEventListener("scroll", upd, { passive: true });
+    upd();
+    el.addEventListener("click", function (e) {
+      var t = document.querySelector(el.getAttribute("href"));
+      if (!t) return;
+      e.preventDefault();
+      var smooth = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+      t.scrollIntoView({ behavior: smooth ? "smooth" : "auto" });
+    });
   }
 
   /* ---------- Nosotros: contador animado del +30 ---------- */
@@ -488,6 +531,7 @@
     safe(initLightSwitch, "lightSwitch");
     safe(initGrid, "grid");
     safe(initMagnetic, "magnetic");
+    safe(initScrollCue, "scrollCue");
   }
 
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
