@@ -1775,3 +1775,63 @@ button, input, select, textarea { font-family: inherit; }
 [hidden] { display: none !important; }
 /* Nosotros: solo badge + título + texto */
 .ab3 .about__intro { margin-bottom: 0; }
+
+/* ============================================================
+   NOSOTROS v4: foto a la izquierda, texto + checklist + datos a la derecha
+   ============================================================ */
+.ab4__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(40px, 5vw, 72px); align-items: stretch; }
+.ab4__photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; min-height: 560px; }
+.ab4__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ab4__ph {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 10px;
+  color: rgba(14,14,12,.38); font-family: var(--sans); font-size: 14px;
+  background:
+    radial-gradient(rgba(14,14,12,.10) 1px, transparent 1.2px) 0 0 / 18px 18px,
+    radial-gradient(120% 90% at 20% 0%, rgba(1,102,252,.10), transparent 60%),
+    linear-gradient(160deg, #ECEBE6, #E2E0D8);
+  box-shadow: inset 0 0 0 1px var(--line); border-radius: inherit;
+}
+.ab4__ph svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ab4__body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.ab4__title { text-align: left; margin: 22px 0 0; max-width: 18ch; font-size: clamp(32px, 3.4vw, 50px); line-height: 1.08; }
+.ab4__text { margin: 22px 0 0; max-width: 56ch; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.7; color: var(--muted); text-align: left; }
+.ab4__list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 16px; }
+.ab4__list li { display: flex; align-items: center; gap: 14px; font-size: 16px; color: var(--ink-2); }
+.ab4__list svg { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--volt); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ab4__stats { margin-top: 40px; display: grid; grid-template-columns: repeat(3, auto); gap: clamp(28px, 4vw, 64px); justify-content: start; }
+.ab4__stats > div { display: flex; flex-direction: column; gap: 8px; }
+.ab4__num { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 4vw, 60px); letter-spacing: -.04em; line-height: 1; color: var(--ink); }
+.ab4__lbl { font-size: 15px; color: var(--muted); }
+
+@media (max-width: 1024px) {
+  .ab4__grid { grid-template-columns: 1fr; }
+  .ab4__photo { min-height: 0; aspect-ratio: 16 / 10; }
+  .ab4__title { max-width: 22ch; }
+}
+@media (max-width: 760px) {
+  .ab4__photo { aspect-ratio: 4 / 3; border-radius: 18px; }
+  .ab4__list li { align-items: flex-start; font-size: 15px; }
+  .ab4__stats { grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
+  .ab4__num { font-size: 32px; }
+  .ab4__lbl { font-size: 13px; line-height: 1.35; }
+}
+.ab4__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: clamp(20px, 3vw, 48px); }
+.ab4__num { font-size: clamp(34px, 3.3vw, 52px); white-space: nowrap; }
+@media (max-width: 760px) { .ab4__num { font-size: clamp(24px, 7.4vw, 32px); } }
+
+/* Testimonios: dos carruseles en sentidos opuestos, tarjetas más compactas */
+.imc-rows { display: grid; gap: 14px; }
+.imc__track { gap: 14px; }
+.imc__card { width: 320px; max-width: 320px; min-width: 0; padding: 20px; gap: 12px; border-radius: 16px; }
+.imc__stars { font-size: 14px; }
+.imc__desc { font-size: 14.5px; line-height: 1.55; }
+.imc__who { padding-top: 12px; gap: 10px; }
+.imc__av { width: 36px; height: 36px; font-size: 12px; }
+@media (max-width: 760px) {
+  .imc-rows { gap: 10px; }
+  .imc__track { gap: 10px; }
+  .imc__card { width: 272px; max-width: 272px; padding: 18px; }
+}
+/* La reseña larga va en una tarjeta más ancha, así todas quedan más bajas */
+.imc__card--wide { width: 480px; max-width: 480px; }
+@media (max-width: 760px) { .imc__card--wide { width: 320px; max-width: 320px; } }

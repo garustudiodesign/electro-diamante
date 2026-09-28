@@ -77,12 +77,26 @@
     </section>
 
     <!-- NOSOTROS -->
-    <section class="section about about--light ab3" id="nosotros">
-      <div class="wrap">
-        <div class="about__intro">
+    <section class="section about about--light ab4" id="nosotros">
+      <div class="wrap ab4__grid">
+        <figure class="ab4__photo reveal" data-img="nosotros">
+          <div class="ab4__ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg><span>Foto del taller</span></div>
+        </figure>
+        <div class="ab4__body">
           <p class="label pill pill--plain reveal"><span class="pill__txt">Nosotros</span></p>
-          <h2 class="about__title reveal">Hacemos que tus equipos vuelvan a funcionar <span>como el primer día.</span></h2>
-          <p class="about__text reveal">Somos un taller especializado y comercio de electricidad con amplia trayectoria en el rubro. Combinamos conocimiento técnico, repuestos de calidad y atención cercana para darte respuestas claras y soluciones transparentes.</p>
+          <h2 class="about__title ab4__title reveal">Hacemos que tus equipos vuelvan a funcionar <span>como el primer día.</span></h2>
+          <p class="ab4__text reveal">Somos un taller especializado y comercio de electricidad con amplia trayectoria en el rubro. Combinamos conocimiento técnico, repuestos de calidad y atención cercana para darte respuestas claras y soluciones transparentes.</p>
+          <ul class="ab4__list reveal">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.8"/></svg><span>Diagnóstico completo antes de cada reparación</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.8"/></svg><span>Presupuesto claro antes de empezar el trabajo</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.8"/></svg><span>Repuestos de primera calidad</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.8"/></svg><span>Atención directa, por WhatsApp o en el local</span></li>
+          </ul>
+          <div class="ab4__stats reveal">
+            <div><span class="ab4__num"><span data-count-to="30">30</span>+</span><span class="ab4__lbl">años de experiencia</span></div>
+            <div><span class="ab4__num">5.000+</span><span class="ab4__lbl">equipos reparados</span></div>
+            <div><span class="ab4__num">1.500+</span><span class="ab4__lbl">clientes satisfechos</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -221,37 +235,71 @@
           <h2 class="h2 h2--center reveal">Reseñas de clientes</h2>
         </div>
       </div>
-      <div class="imc reveal" data-speed="normal" data-direction="left" aria-label="Opiniones de clientes">
-        <div class="imc__viewport">
-          <div class="imc__track">
-            <article class="imc__card">
-              <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="imc__desc">“Excelente atención y precios, muy recomendables.”</p>
-              <div class="imc__who">
-                <span class="imc__av" aria-hidden="true">BC</span>
-                <div><p class="imc__name">Boris Contreras</p><p class="imc__role">Cliente</p></div>
-              </div>
-            </article>
-            <article class="imc__card">
-              <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="imc__desc">“Excelente atención, productos y reparaciones garantizados.”</p>
-              <div class="imc__who">
-                <span class="imc__av" aria-hidden="true">JQ</span>
-                <div><p class="imc__name">Javier Quintana</p><p class="imc__role">Cliente</p></div>
-              </div>
-            </article>
-            <article class="imc__card">
-              <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <p class="imc__desc">“Un lugar con gran amplitud de elementos eléctricos, motores, lámparas, todo lo que te puedas imaginar, y aparte hacen reparación de motores, etcétera. La gente muy amable, muy cordial y muy familiar. La atención muy buena.”</p>
-              <div class="imc__who">
-                <span class="imc__av" aria-hidden="true">JG</span>
-                <div><p class="imc__name">José González</p><p class="imc__role">Cliente</p></div>
-              </div>
-            </article>
+      <div class="imc-rows">
+        <div class="imc reveal" data-speed="normal" data-direction="left" aria-label="Opiniones de clientes">
+          <div class="imc__viewport">
+            <div class="imc__track">
+              <article class="imc__card">
+                <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <p class="imc__desc">“Excelente atención y precios, muy recomendables.”</p>
+                <div class="imc__who">
+                  <span class="imc__av" aria-hidden="true">BC</span>
+                  <div><p class="imc__name">Boris Contreras</p><p class="imc__role">Cliente</p></div>
+                </div>
+              </article>
+              <article class="imc__card">
+                <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <p class="imc__desc">“Excelente atención, productos y reparaciones garantizados.”</p>
+                <div class="imc__who">
+                  <span class="imc__av" aria-hidden="true">JQ</span>
+                  <div><p class="imc__name">Javier Quintana</p><p class="imc__role">Cliente</p></div>
+                </div>
+              </article>
+              <article class="imc__card imc__card--wide">
+                <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <p class="imc__desc">“Un lugar con gran amplitud de elementos eléctricos, motores, lámparas, todo lo que te puedas imaginar, y aparte hacen reparación de motores, etcétera. La gente muy amable, muy cordial y muy familiar. La atención muy buena.”</p>
+                <div class="imc__who">
+                  <span class="imc__av" aria-hidden="true">JG</span>
+                  <div><p class="imc__name">José González</p><p class="imc__role">Cliente</p></div>
+                </div>
+              </article>
+            </div>
           </div>
+          <div class="imc__mask imc__mask--l" aria-hidden="true"></div>
+          <div class="imc__mask imc__mask--r" aria-hidden="true"></div>
         </div>
-        <div class="imc__mask imc__mask--l" aria-hidden="true"></div>
-        <div class="imc__mask imc__mask--r" aria-hidden="true"></div>
+        <div class="imc reveal" data-speed="normal" data-direction="right" aria-label="Más opiniones de clientes">
+          <div class="imc__viewport">
+            <div class="imc__track">
+              <article class="imc__card imc__card--wide">
+                <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <p class="imc__desc">“Un lugar con gran amplitud de elementos eléctricos, motores, lámparas, todo lo que te puedas imaginar, y aparte hacen reparación de motores, etcétera. La gente muy amable, muy cordial y muy familiar. La atención muy buena.”</p>
+                <div class="imc__who">
+                  <span class="imc__av" aria-hidden="true">JG</span>
+                  <div><p class="imc__name">José González</p><p class="imc__role">Cliente</p></div>
+                </div>
+              </article>
+              <article class="imc__card">
+                <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <p class="imc__desc">“Excelente atención y precios, muy recomendables.”</p>
+                <div class="imc__who">
+                  <span class="imc__av" aria-hidden="true">BC</span>
+                  <div><p class="imc__name">Boris Contreras</p><p class="imc__role">Cliente</p></div>
+                </div>
+              </article>
+              <article class="imc__card">
+                <div class="imc__stars" role="img" aria-label="5 de 5 estrellas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <p class="imc__desc">“Excelente atención, productos y reparaciones garantizados.”</p>
+                <div class="imc__who">
+                  <span class="imc__av" aria-hidden="true">JQ</span>
+                  <div><p class="imc__name">Javier Quintana</p><p class="imc__role">Cliente</p></div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="imc__mask imc__mask--l" aria-hidden="true"></div>
+          <div class="imc__mask imc__mask--r" aria-hidden="true"></div>
+        </div>
       </div>
     </section>
 
