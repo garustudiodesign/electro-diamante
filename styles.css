@@ -1773,3 +1773,5 @@ button, input, select, textarea { font-family: inherit; }
 /* Footer · contacto: dirección en un solo bloque y nada vacío ocupa lugar */
 .footer__col li.footer__addr { line-height: 1.6; }
 [hidden] { display: none !important; }
+/* Nosotros: solo badge + título + texto */
+.ab3 .about__intro { margin-bottom: 0; }

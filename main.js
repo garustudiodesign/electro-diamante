@@ -50,7 +50,7 @@
         return r.top <= probe && r.bottom > probe;
       });
       nav.classList.toggle("is-dark", onDark);
-      if (fab) fab.classList.toggle("is-visible", y > window.innerHeight * 0.6);
+      if (fab) fab.classList.add("is-visible"); // visible desde el hero
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
