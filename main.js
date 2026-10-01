@@ -11,6 +11,7 @@
   function safe(fn, name) {
     try { fn(); } catch (e) { if (window.console) console.warn("[ED] " + name + " falló:", e); }
   }
+  var REDUCE = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   function $all(sel, ctx) { return Array.prototype.slice.call((ctx || doc).querySelectorAll(sel)); }
 
   /* ---------- Datos del negocio (config.js) ---------- */
@@ -109,7 +110,7 @@
     });
     // Resalta la sección en la que está el usuario
     function markCurrent() {
-      var ids = ["nosotros", "servicios", "productos", "faq"], cur = doc.body.getAttribute("data-page-sec") || "top";
+      var ids = ["nosotros", "servicios", "productos", "faq", "contacto"], cur = doc.body.getAttribute("data-page-sec") || "top";
       if (doc.body.getAttribute("data-page-sec")) ids = [];
       ids.forEach(function (id) {
         var el = doc.getElementById(id);
@@ -130,7 +131,7 @@
   /* ---------- Reveal al scrollear ---------- */
   function initReveal() {
     // Cascada: cada hijo de un grupo entra un poco después que el anterior
-    [".svc", ".about__bento", ".faq__list", ".info"].forEach(function (g) {
+    [".svc", ".about__bento", ".about2__bento", ".faq__list", ".ct__list", ".info"].forEach(function (g) {
       $all(g).forEach(function (box) {
         $all(".reveal", box).forEach(function (el, k) { el.style.setProperty("--i", k); });
       });
@@ -422,7 +423,7 @@
       var to = parseFloat(el.getAttribute("data-count-to")) || 0;
       var dec = parseInt(el.getAttribute("data-dec"), 10) || 0;
       var pre = el.getAttribute("data-prefix") || "";
-      if (!("IntersectionObserver" in window)) return;
+      if (REDUCE || !("IntersectionObserver" in window)) return;
       var done = false;
       new IntersectionObserver(function (en, obs) {
         if (done || !en[0].isIntersecting) return;
@@ -439,7 +440,7 @@
 
   /* ---------- Grilla de puntos reactiva al mouse (hero) ---------- */
   var GRID_T0 = performance.now();
-  function initGrid() { $all(".hero__grid").forEach(gridOn); }
+  function initGrid() { if (REDUCE) return; $all(".hero__grid").forEach(gridOn); }
   function gridOn(c) {
     if (!c || !c.getContext) return;
     var fade = parseFloat(c.getAttribute("data-fade")) || 0;
@@ -524,6 +525,7 @@
 
   /* ---------- Botones magnéticos ---------- */
   function initMagnetic() {
+    if (REDUCE) return;
     if (window.matchMedia && !window.matchMedia("(hover: hover)").matches) return;
     $all(".magnetic").forEach(function (b) {
       b.addEventListener("pointermove", function (e) {
@@ -574,3 +576,18 @@
   if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();
+
+/* Cómo trabajamos: línea de progreso ligada al scroll */
+(function(){var list=document.querySelector('.hw-list');if(!list)return;
+var it=[].slice.call(list.querySelectorAll('.hw')),bars=[].slice.call(document.querySelectorAll('.hw-bars i')),num=document.querySelector('.hw-count__n');
+var red=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches,cur=-1,tick=false;
+function setNum(i){if(!num)return;var n=document.createElement('span');n.textContent=('0'+(i+1)).slice(-2);n.className=i>cur?'in-down':'in-up';num.innerHTML='';num.appendChild(n);}
+function update(){tick=false;var vh=window.innerHeight,focus=vh*0.55,lr=list.getBoundingClientRect();
+ var ic=list.querySelectorAll('.hw__ico'),f0=ic[0].getBoundingClientRect(),f1=ic[ic.length-1].getBoundingClientRect();var h=(f1.top+f1.height/2)-(f0.top+f0.height/2);list.style.setProperty('--h',h+'px');var off=f0.top+f0.height/2-lr.top;
+ var p=(focus-lr.top-off)/Math.max(1,h);p=Math.max(0,Math.min(1,p));list.style.setProperty('--p',p.toFixed(4));list.classList.toggle('tip-off',p>=0.995);
+ var a=-1;it.forEach(function(el,k){var r=el.querySelector('.hw__ico').getBoundingClientRect();var on=r.top+r.height/2<=focus;el.classList.toggle('is-on',on||red);if(on)a=k;});
+ it.forEach(function(el,k){el.classList.toggle('is-cur',k===a)});
+ bars.forEach(function(b,k){var el=it[k],r=el.getBoundingClientRect(),f=(focus-r.top)/Math.max(1,r.height);b.style.setProperty('--f',Math.max(0,Math.min(1,f)).toFixed(3))});
+ var shown=Math.max(0,a);if(shown!==cur){if(cur>=0)setNum(shown);cur=shown;}}
+window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
+window.addEventListener('resize',update);update();})();

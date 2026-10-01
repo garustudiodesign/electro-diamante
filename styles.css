@@ -2498,3 +2498,177 @@ a.ct-row:focus-visible { outline: 2px solid var(--volt-soft); outline-offset: 4p
 @media (max-width: 760px) { .ct__cta .btn { width: 100%; justify-content: center; } .ct-row { gap: 16px; padding: 24px 0; } .ct-val { font-size: 18px; } }
 .ct-val--mail { overflow-wrap: normal; word-break: normal; }
 @media (max-width: 400px) { .ct-val--mail { font-size: 16px; } }
+/* Contacto: íconos en cuadrado redondeado, como los pasos de "Cómo trabajamos" */
+.ct-row { align-items: center; }
+.ct-ico { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; padding: 0; background: var(--grad); color: #fff; box-shadow: 0 8px 18px -10px rgba(1,102,252,.7); transition: transform .25s var(--ease); }
+.ct-ico svg { width: 24px; height: 24px; stroke-width: 1.5; }
+a.ct-row:hover .ct-ico { transform: translateY(-2px); }
+@media (max-width: 760px) { .ct-ico { width: 40px; height: 40px; border-radius: 12px; } .ct-ico svg { width: 20px; height: 20px; } }
+#contacto .ct-val { font-size: 20px; }
+@media (max-width: 760px) { #contacto .ct-val { font-size: 18px; } #contacto .ct-val--mail { font-size: 16px; } }
+
+/* ============================================================
+   Contacto en claro (alternancia: Opiniones claro · FAQs oscuro · Contacto claro · footer oscuro)
+   Filas como tarjetas con borde, igual que las FAQs
+   ============================================================ */
+#contacto { background: var(--paper); color: var(--ink); }
+#contacto::before { content: none; }
+#contacto .ct__head .h2 { color: var(--ink); }
+#contacto .ct__head .h2 strong { color: var(--volt); }
+#contacto .ct__list { display: flex; flex-direction: column; gap: 16px; border: 0; }
+#contacto .ct__list li { border: 0; }
+#contacto .ct-row { padding: 24px 32px; gap: 24px; background: #fff; border: 1px solid var(--line); border-radius: 18px; transition: border-color .3s var(--ease), box-shadow .3s var(--ease); }
+#contacto a.ct-row:hover { border-color: rgba(1,102,252,.45); box-shadow: 0 16px 34px -26px rgba(14,14,12,.3); }
+#contacto .ct-lbl { color: var(--muted); }
+#contacto .ct-val { color: var(--ink); }
+#contacto .ct-sub { color: var(--muted); }
+#contacto a.ct-row:hover .ct-val { color: var(--volt); }
+#contacto .ct-ico, #contacto a.ct-row:hover .ct-ico { transform: none; transition: none; }
+@media (max-width: 760px) { #contacto .ct-row { padding: 20px; gap: 16px; border-radius: 16px; } #contacto .ct__list { gap: 16px; } }
+#contacto .ct-row > span:last-child { min-width: 0; }
+@media (max-width: 760px) { #contacto .ct-row { padding: 16px; } #contacto .ct-val, #contacto .ct-val--mail { font-size: 16px; } }
+@media (max-width: 1024px) { .ct__grid { grid-template-columns: minmax(0, 1fr); } }
+#contacto .ct-val--mail { overflow-wrap: anywhere; }
+@media (min-width: 361px) { #contacto .ct-val--mail { overflow-wrap: normal; } }
+@media (max-width: 760px) { #contacto .ct-val--mail { overflow-wrap: anywhere; } }
+
+/* Opiniones en claro: cards blancas con borde (el fundido de los costados se pierde sobre el papel) */
+.tone-light .imc__card { background: #fff; border: 1px solid var(--line); box-shadow: none; color: var(--ink); }
+.tone-light .imc__desc { color: var(--ink-2); }
+.tone-light .imc__name { color: var(--ink); }
+.tone-light .imc__role { color: var(--muted); }
+.tone-light .imc__who { border-top-color: var(--line); }
+.tone-light .imc__stars { color: var(--volt); }
+
+/* ============================================================
+   Hover parejo en cards: borde azul + sombra suave, sin saltos
+   ============================================================ */
+.faq__item { transition: background-color .35s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.faq__item:not(.is-open):hover { border-color: rgba(1,102,252,.45); box-shadow: 0 16px 34px -26px rgba(14,14,12,.3); }
+.tone-dark .faq__item:not(.is-open):hover { border-color: rgba(92,157,255,.45); box-shadow: none; }
+.imc__card { transition: border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.imc__card:hover { transform: none; }
+.tone-light .imc__card:hover { border-color: rgba(1,102,252,.45); box-shadow: 0 16px 34px -26px rgba(14,14,12,.3); }
+
+/* ============================================================
+   Movimiento reducido: sin animaciones ni transiciones de entrada
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+  .js .reveal, .js .hero__title .line > span { opacity: 1 !important; transform: none !important; }
+  .marquee__track, .imc__track { animation: none !important; }
+}
+
+/* Reseñas: estrella vacía (calificación de 4) */
+.imc__stars .is-off { opacity: .25; }
+
+
+/* ============================================================
+   Rediseño oct-2026: Nosotros bento, Cómo trabajamos (timeline),
+   Productos centrado, Testimonios, Contacto, FAQs y footer
+   ============================================================ */
+
+/* Cómo trabajamos: timeline vertical con progreso ligado al scroll */
+#como .hw__grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(48px,6vw,96px);align-items:start}
+#como .hw__head{position:sticky;top:120px}
+#como .hw__head .h2{margin-top:24px;text-align:left;max-width:16ch;text-wrap:balance}
+#como .hw__sub{margin:16px 0 0;font-size:18px;line-height:1.6;color:var(--muted);max-width:36ch}
+/* Contador del paso activo */
+.hw-count{display:flex;align-items:flex-end;gap:16px;margin-top:48px}
+.hw-count__n{position:relative;display:inline-grid;height:1em;overflow:hidden;font-family:var(--display);font-weight:600;font-size:80px;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+.hw-count__n span{display:block}
+.hw-count__n span.in-down{animation:hwc-d .55s var(--ease)}
+.hw-count__n span.in-up{animation:hwc-u .55s var(--ease)}
+@keyframes hwc-d{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
+@keyframes hwc-u{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+.hw-count__of{padding-bottom:12px;font-family:var(--display);font-weight:600;font-size:20px;color:var(--muted)}
+.hw-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:24px;max-width:320px}
+.hw-bars i{height:4px;border-radius:4px;background:var(--line);overflow:hidden;position:relative}
+.hw-bars i::after{content:"";position:absolute;inset:0;background:var(--grad);transform:scaleX(var(--f,0));transform-origin:left;transition:transform .2s linear}
+/* Lista */
+.hw-list{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(64px,14vh,128px);--p:0}
+.hw-list::before,.hw-list::after{content:"";position:absolute;left:23px;top:24px;height:var(--h,0px);width:2px;border-radius:2px}
+.hw-list::before{background:var(--line)}
+.hw-list::after{background:linear-gradient(180deg,#3FA2FF,#0166FC 60%,#0052D1);transform:scaleY(var(--p));transform-origin:top}
+.hw-tip{position:absolute;left:20px;top:24px;width:8px;height:8px;border-radius:50%;background:var(--volt);box-shadow:0 0 0 4px rgba(1,102,252,.12);transform:translateY(calc(var(--h,0px) * var(--p) - 4px));opacity:calc(var(--p) * 40);z-index:0;pointer-events:none}
+.hw{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:32px;align-items:start}
+.hw__line{display:none}
+.hw-list.tip-off .hw-tip{opacity:0;transition:opacity .2s}
+.hw__rail{position:relative;z-index:2}
+.hw__ico{position:relative;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:#fff;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);transition:background .5s var(--ease),color .5s var(--ease),box-shadow .5s var(--ease),transform .5s var(--ease)}
+.hw__ico svg{width:24px;height:24px;stroke-width:1.5}
+.hw__ico::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 2px var(--volt);opacity:0}
+.hw.is-on .hw__ico{background:var(--grad);color:#fff;box-shadow:0 12px 24px -10px rgba(1,102,252,.8);transform:scale(1.08)}
+.hw.is-on .hw__ico::after{animation:hw-ring 1s var(--ease) 1}
+@keyframes hw-ring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.9)}}
+.hw__body{position:relative;padding-top:8px;opacity:.35;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.hw__body h3{margin:0;font-family:var(--display);font-weight:600;font-size:24px;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+.hw__body p{margin:12px 0 0;font-size:16px;line-height:1.6;color:var(--muted);max-width:44ch;padding-right:16px}
+.hw.is-on .hw__body{opacity:1;transform:none}
+.hw.is-on .hw__num{opacity:1;transform:none}
+.hw__body h3,.hw__body p{position:relative}
+@media(max-width:1024px){#como .hw__grid{grid-template-columns:minmax(0,1fr);gap:48px}#como .hw__head{position:static}.hw-count,.hw-bars{display:none}.hw-list{gap:48px}}
+@media(max-width:760px){
+  .hw{grid-template-columns:40px minmax(0,1fr);gap:16px}
+  .hw-list::before,.hw-list::after{left:19px;top:20px;z-index:0}
+  .hw-tip{left:16px;top:16px}
+  .hw__ico{width:40px;height:40px;border-radius:12px}
+  .hw__ico svg{width:20px;height:20px}
+  .hw__body{padding-top:4px}
+  .hw__body h3{font-size:18px}
+  .hw__num{font-size:44px;right:16px;top:20px}
+  .hw-list{gap:56px}
+  #como .hw__sub{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.hw-count__n span{animation:none!important}.hw__ico,.hw__body,.hw__num{transition:none!important}.hw__ico::after{animation:none!important}}
+.reviews .h2{white-space:nowrap;max-width:none}
+@media(max-width:1024px){.reviews .h2{font-size:clamp(28px,5.6vw,48px)}}
+@media(max-width:560px){.reviews .h2{white-space:normal;text-wrap:balance}}
+
+/* Nosotros: bento de 6 datos */
+@media(min-width:1025px){#nosotros .about2__grid,#nosotros .wrap.about2__grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important}}
+#nosotros .about2__suf--u{margin-left:.16em}
+#nosotros .about2__bento{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(160px,auto);gap:16px}
+#nosotros .about2__card{min-height:0;padding:24px}
+#nosotros .about2__card--hero{grid-column:span 2;grid-row:span 2}
+#nosotros .about2__bento .about2__card--hero .about2__big{font-size:clamp(96px,10vw,152px);letter-spacing:-.05em}
+#nosotros .about2__bento .about2__card:not(.about2__card--hero) .about2__big{font-size:clamp(32px,3vw,44px)}
+#nosotros .about2__card--txt{justify-content:space-between}
+#nosotros .about2__ico{display:block;width:auto;height:auto;color:var(--volt-soft);line-height:0;background:none!important;box-shadow:none!important;border-radius:0;align-self:flex-start;margin:0}
+#nosotros .about2__ico svg{width:40px;height:40px;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+#nosotros .about2__card--txt b{font:inherit;color:inherit}
+#nosotros .about2__desc{margin-top:8px}
+@media(max-width:760px){#nosotros .about2__bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}#nosotros .about2__card:not(.about2__card--txt){min-height:136px}#nosotros .about2__card--hero{grid-column:1/-1;grid-row:auto}#nosotros .about2__bento .about2__card--hero .about2__big{font-size:96px}#nosotros .about2__card--txt{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:flex-start;gap:16px;min-height:0}#nosotros .about2__card--txt .about2__desc{margin:0}#nosotros .about2__card--txt{gap:20px;padding:20px 24px}#nosotros .about2__ico svg{width:40px;height:40px;stroke-width:1}#nosotros .about2__card{padding:16px}}
+/* Productos centrado como Servicios: 2 cards del mismo ancho que las de Servicios */
+@media(min-width:1025px){
+  #productos .prod__grid{display:block}
+  #productos .prod__grid .center-head{position:static;align-items:center;text-align:center;margin:0 auto clamp(48px,5vw,64px)}
+  #productos .prod__grid .center-head .h2{text-align:center;margin-left:auto;margin-right:auto}
+  #productos .prod__grid .center-head__sub{text-align:center;margin:16px auto 0;max-width:60ch;text-wrap:balance}
+  #productos .prod__grid .svc--2{--g:clamp(24px,2.2vw,32px);gap:var(--g);grid-template-columns:repeat(2,calc((100% - 2 * var(--g)) / 3));justify-content:center}
+}
+/* Contacto: más interlineado en mobile */
+@media(max-width:760px){#contacto .ct-val{line-height:1.5}#contacto .ct-hours{row-gap:8px}}
+/* FAQs: abierta con borde blanco suave, hover en azul */
+#faq.tone-dark .faq__item.is-open{border-color:rgba(243,242,238,.32)!important;box-shadow:none}
+#faq.tone-dark .faq__item:hover{border-color:rgba(92,157,255,.6)!important}
+/* Footer en 4 columnas */
+@media(min-width:1025px){.footer--grid .footer__main{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+/* Contacto: dos columnas, cada dato en una línea (en mobile puede pasar a dos) */
+.ct__lead{margin:16px 0 0;font-size:18px;line-height:1.6;color:var(--muted);max-width:32ch}
+#contacto .ct__grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(48px,7vw,120px)}
+#contacto .ct-row{padding:24px 30px;gap:20px}
+#contacto .ct-ico{width:40px;height:40px;border-radius:12px}
+#contacto .ct-ico svg{width:20px;height:20px}
+#contacto .ct-val{font-size:18px}
+#contacto .ct-lbl{font-size:11px}
+@media(max-width:760px){#contacto .ct-row{padding:20px;gap:16px}#contacto .ct-val{font-size:16px}#contacto .ct-val--mail{overflow-wrap:anywhere}}
+@media(max-width:1024px){#contacto .ct__grid{grid-template-columns:minmax(0,1fr)}}
+#contacto .ct-val--one{white-space:nowrap}
+.br-m{display:none}
+#contacto .ct-hours{display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:4px 24px;margin-top:8px}
+#contacto .ct-hours .ct-val{margin:0;white-space:nowrap}
+.ct-hd{font-size:15px;color:var(--muted)}
+@media(min-width:1025px){#contacto .ct-hours{grid-template-columns:auto auto auto auto;justify-content:start;gap:0 12px}#contacto .ct-hours > :nth-child(3){margin-left:24px;padding-left:24px;border-left:1px solid var(--line)}}
+@media(max-width:760px){#contacto .ct-val--one{white-space:normal}.br-m{display:inline}#contacto .ct-sep{display:none}}
+
