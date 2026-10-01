@@ -31,7 +31,7 @@
     // Teléfono (llamada): arma el link tel: con los dígitos del número visible
     var telDigits = String(CFG.telefono || CFG.telefonoVisible || "").replace(/\D/g, "");
     if (telDigits) $all("[data-tel]").forEach(function (el) { el.href = "tel:+" + telDigits; });
-    if (CFG.email) $all("[data-email]").forEach(function (el) { el.textContent = CFG.email; el.href = "mailto:" + CFG.email; });
+    if (CFG.email) { $all("[data-email]").forEach(function (el) { el.textContent = CFG.email; el.href = "mailto:" + CFG.email; }); $all(".footer__mail").forEach(function (el) { el.href = "mailto:" + CFG.email; }); $all("[data-email-text]").forEach(function (el) { el.textContent = CFG.email; }); }
     // Oculta del footer los datos que queden vacíos en config.js
     $all("[data-if]").forEach(function (li) { if (!String(CFG[li.getAttribute("data-if")] || "").trim()) li.hidden = true; });
   }
@@ -239,7 +239,7 @@
 
   /* ---------- Delight: luz de servicios y llave de luz ---------- */
   function initSpotlight() {
-    $all(".svc__item, .about__card").forEach(function (card) {
+    $all(".svc__item, .about__card, .about2__card").forEach(function (card) {
       card.addEventListener("pointermove", function (e) {
         var r = card.getBoundingClientRect();
         card.style.setProperty("--mx", (e.clientX - r.left) + "px");
