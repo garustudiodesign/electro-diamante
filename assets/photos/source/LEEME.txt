@@ -1,2 +1,0 @@
-Cuando tengas fotos del local o de los productos, dejalas en esta carpeta
-y pedile a Claude que las sume a la web (las convierte a WebP automáticamente).
