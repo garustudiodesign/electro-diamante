@@ -2254,6 +2254,7 @@ main:focus { outline: none; }
 #contacto a.ct__map:hover .ct__go svg { transform: translateX(4px); }
 #contacto a.ct__map:hover .ct__go { background: none; }
 
+
 /* Contacto: tarjeta de dirección en azul de marca, texto blanco */
 #contacto .ct__ov { background: linear-gradient(160deg, #0166FC, #0052D1); box-shadow: 0 12px 32px -12px rgba(1,82,209,.6); }
 #contacto .ct__addr b { color: #fff; }

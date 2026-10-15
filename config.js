@@ -5,7 +5,7 @@
 window.__ED__ = {
   // Número de WhatsApp: código de país + área + número, SIN espacios, guiones ni "+".
   // Ejemplo Argentina (Buenos Aires): 5491123456789
-  whatsapp: "5491120945864",
+  whatsapp: "5491112340000",
 
   // Teléfono fijo del local para llamadas (footer). "telefono" es el número que se marca:
   // código de país + área + número, SIN espacios ni guiones. Un fijo de CABA/GBA NO lleva el 9.
