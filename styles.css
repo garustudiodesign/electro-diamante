@@ -2260,3 +2260,7 @@ main:focus { outline: none; }
 #contacto .ct__addr b { color: #fff; }
 #contacto .ct__addr span { color: rgba(255,255,255,.8); }
 #contacto .ct__go { color: #fff; }
+
+/* Contacto: el iframe del mapa siempre rellena el recuadro (también en mobile) */
+#contacto .ct__frame { display: block; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+#contacto .ct__ov { z-index: 2; }
