@@ -1,0 +1,284 @@
+/* =========================================================
+   Electro Diamante · Hero (.hero-split)
+   Todo está acotado a .hero-split. La grilla de puntos y los cables
+   los dibuja hero-split.js en el canvas .hs-lines.
+   Tipografías: usa las del sitio (--display para el título, --sans para el resto).
+   ========================================================= */
+
+.hero-split {
+  --hs-bg: #0E0E0C;
+  --hs-fg: #F3F2EE;
+  --hs-fg-2: rgba(243, 242, 238, .74);
+  --hs-fg-3: rgba(243, 242, 238, .64);
+  --hs-line: rgba(243, 242, 238, .24);
+  --hs-blue: #0166FC;
+  --hs-blue-hover: #0052D1;
+  --hs-blue-active: #0046B3;
+  --hs-blue-light: #5C9DFF;
+  --hs-wa: #25D366;
+  --hs-wa-hover: #1DB954;
+  --hs-sans: var(--sans, "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  --hs-display: var(--display, "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  --hs-mono: var(--sans, "Inter", system-ui, sans-serif);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: 64px;
+  padding-inline: 24px;
+  background: var(--hs-bg);
+  color: var(--hs-fg);
+  font-family: var(--hs-sans);
+  -webkit-font-smoothing: antialiased;
+}
+.hero-split *,
+.hero-split *::before,
+.hero-split *::after { box-sizing: border-box; }
+
+/* Grilla de puntos de respaldo (solo si no corre el JS; con JS la dibuja el canvas) */
+.hero-split::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(243, 242, 238, .17) 1px, transparent 1.6px);
+  background-size: 24px 24px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 45%, #000 18%, transparent 80%);
+          mask-image: radial-gradient(ellipse 72% 72% at 50% 45%, #000 18%, transparent 80%);
+}
+.hero-split.hs-js::before { display: none; }
+
+/* ---------- Layout base (celular / tablet: una columna) ---------- */
+.hero-split .hs-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.hero-split .hs-copy {
+  min-width: 0;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-split .hs-title {
+  margin: 0;
+  font-family: var(--hs-display);
+  font-size: clamp(48px, 7vw, 64px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.hero-split .hs-title span { display: block; }
+.hero-split .hs-accent {
+  color: var(--hs-blue);
+  font-weight: 700;
+}
+
+.hero-split .hs-lead {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--hs-fg-2);
+  text-wrap: pretty;
+}
+
+/* ---------- Botones ---------- */
+.hero-split .hs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+.hero-split .hs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font: 500 16px/1 var(--hs-sans);
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .16s ease, border-color .16s ease;
+}
+.hero-split .hs-btn--primary {
+  background: var(--hs-blue);
+  color: var(--hs-fg);
+}
+.hero-split .hs-btn--primary:hover { background: var(--hs-blue-hover); }
+.hero-split .hs-btn--primary:active { background: var(--hs-blue-active); }
+
+.hero-split .hs-btn--ghost {
+  background: transparent;
+  border-color: var(--hs-line);
+  color: var(--hs-fg);
+}
+.hero-split .hs-btn--ghost:hover {
+  border-color: var(--hs-blue-light);
+  background: rgba(92, 157, 255, .08);
+}
+.hero-split .hs-btn--ghost:active { background: rgba(92, 157, 255, .14); }
+
+.hero-split .hs-btn-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-split a:focus { outline: none; }
+.hero-split a:focus-visible {
+  outline: 2px solid var(--hs-blue-light);
+  outline-offset: 3px;
+}
+
+/* ---------- Línea de confianza ---------- */
+.hero-split .hs-meta {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  font: 400 13px/1.4 var(--hs-mono);
+  color: var(--hs-fg-3);
+}
+.hero-split .hs-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-split .hs-meta svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: var(--hs-blue-light);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Canvas: grilla de puntos + líneas de corriente (ver hero-split.js) ----------
+   Los puntos se ven en todos los tamaños; las líneas, solo en escritorio. */
+.hero-split .hs-figure {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+.hero-split .hs-lines {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.hero-split .hs-wa {
+  position: fixed;
+  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--hs-wa);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  transition: background-color .16s ease;
+}
+.hero-split .hs-wa:hover { background: var(--hs-wa-hover); }
+.hero-split .hs-wa:focus-visible { outline-color: var(--hs-fg); }
+.hero-split .hs-wa svg { width: 30px; height: 30px; }
+.hero-split .hs-wa .wa-bubble { fill: none; stroke: #fff; stroke-width: 1.8; stroke-linejoin: round; }
+.hero-split .hs-wa .wa-phone { fill: #fff; }
+
+/* ---------- Tablet (601–1099 px) ---------- */
+@media (min-width: 601px) {
+  .hero-split { padding-block: 80px; }
+}
+
+/* ---------- Escritorio (desde 1100 px) ---------- */
+@media (min-width: 1100px) {
+  .hero-split { padding-block: 176px; }
+  .hero-split .hs-inner { text-align: left; justify-items: start; }
+  .hero-split .hs-copy {
+    align-items: flex-start;
+    justify-self: start;
+  }
+  .hero-split .hs-actions,
+  .hero-split .hs-meta { justify-content: flex-start; }
+  .hero-split .hs-copy { max-width: 820px; }
+  .hero-split .hs-title { font-size: clamp(52px, 4.6vw, 76px); }
+}
+
+/* ---------- Celular (hasta 600 px) ---------- */
+@media (max-width: 600px) {
+  .hero-split { padding-block: 64px; padding-inline: 16px; }
+  .hero-split .hs-inner { gap: 32px; }
+  .hero-split .hs-title { font-size: clamp(30px, 9.6vw, 40px); }
+  .hero-split .hs-lead { font-size: 17px; }
+  .hero-split .hs-actions {
+    flex-direction: column;
+    align-self: stretch;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .hero-split .hs-btn { width: 100%; height: 52px; }
+  .hero-split .hs-wa { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-split .hs-btn,
+  .hero-split .hs-wa { transition: none; }
+}
+
+/* ---------- Ajuste al integrarlo al sitio: el menú es fijo, así que en celular y tablet
+   el contenido arranca más abajo para no quedar tapado ---------- */
+@media (max-width: 1099px) {
+  .hero-split { padding-top: 136px; }
+}
+@media (max-width: 600px) {
+  .hero-split { padding-top: 120px; }
+}
+
+/* ---------- Jerarquía título / bajada: la bajada acompaña al título en escritorio y tablet ---------- */
+@media (min-width: 601px) {
+  .hero-split .hs-lead { font-size: clamp(18px, 1.4vw, 20px); line-height: 1.5; max-width: none; color: rgba(243, 242, 238, .8); }
+  .hero-split .hs-lead span { display: block; }
+}
+@media (min-width: 1100px) {
+  .hero-split .hs-copy { gap: 32px; }
+  .hero-split .hs-actions { margin-top: 8px; }
+}
