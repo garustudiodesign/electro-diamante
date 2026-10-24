@@ -2473,3 +2473,5 @@ body .hero-split .hs-btn .hs-btn-icon { flex: none; }
 /* FAQ: sin brillo, abierta con marco azul */
 #faq.tone-dark .faq__item,#faq.tone-dark .faq__item.is-open{background:#191916!important}
 #faq.tone-dark .faq__item.is-open{border-color:#0166FC!important;box-shadow:none!important}
+/* Opiniones mobile: margen lateral de 16px como el resto de las tarjetas */
+@media (max-width:760px){.imc-rows{padding-inline:16px;box-sizing:border-box}}
