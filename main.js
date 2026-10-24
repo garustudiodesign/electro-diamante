@@ -57,8 +57,17 @@
       // El flotante aparece cuando el botón de WhatsApp del hero ya quedó atrás; si el hero no tiene WhatsApp, está siempre visible
       if (fab) {
         var cta = doc.querySelector(".hero__cta, .hs-actions");
-        var gone = !cta ? y > 120 : !cta.querySelector("[data-wa]") ? true : cta.getBoundingClientRect().bottom < 0;
+        var nos = doc.getElementById("nosotros");
+        var gone = nos ? nos.getBoundingClientRect().top < window.innerHeight * 0.6 : !cta ? y > 120 : !cta.querySelector("[data-wa]") ? true : cta.getBoundingClientRect().bottom < 0;
         fab.classList.toggle("is-visible", gone);
+        // En celular (sin hover) el botón muestra el texto unos segundos la primera vez que aparece
+        if (gone && !fab._peeked) {
+          fab._peeked = true;
+          if (window.matchMedia && window.matchMedia("(hover: none)").matches) {
+            fab.classList.add("is-peek");
+            setTimeout(function () { fab.classList.remove("is-peek"); }, 4000);
+          }
+        }
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -389,7 +398,7 @@
     function equalize() {
       groups.forEach(function (cards) {
         cards.forEach(function (c) { c.style.minHeight = ""; });
-        if (!mq.matches) return;
+        if (!mq.matches || (cards[0] && cards[0].closest("#servicios"))) return; // Servicios va sin apilar: cada tarjeta con su altura
         var h = cards.reduce(function (m, c) { return Math.max(m, c.offsetHeight); }, 0);
         cards.forEach(function (c) { c.style.minHeight = h + "px"; });
       });

@@ -2306,3 +2306,170 @@ main:focus { outline: none; }
 .footer__legal { position: relative; z-index: 1; margin-top: 0; padding: 0; border-top: 1px solid rgba(243,242,238,.10); background: rgba(8,22,46,.35); }
 .footer__legal .wrap { padding-top: 24px; padding-bottom: 24px; }
 .footer__legal p { margin: 0; }
+
+/* Nosotros: textos de tarjetas más legibles */
+#nosotros .about2__desc{font-size:16px!important;font-weight:500;color:rgba(243,242,238,.88)!important}
+#nosotros .about2__card--txt .about2__desc,#nosotros .about2__card--txt b{font-size:18px!important;font-weight:600;color:var(--paper)!important}
+@media(max-width:760px){#nosotros .about2__bento .about2__card:not(.about2__card--hero) .about2__big{font-size:44px;font-weight:600}
+#nosotros .about2__card--hero .about2__desc{font-size:18px!important}}
+
+/* Logos con proporciones propias */
+.brands__logo[src*="motormech"] { height: 38px; }
+.brands__logo[src*="motorarg"] { height: 42px; }
+.brands__logo[src*="pedrollo"], .brands__logo[src*="franklin"] { height: 24px; }
+.brands__logo[src*="grundfos"] { height: 22px; }
+@media (max-width: 760px) { .brands__logo[src*="motormech"] { height: 32px; } .brands__logo[src*="motorarg"] { height: 36px; } .brands__logo[src*="pedrollo"], .brands__logo[src*="franklin"] { height: 20px; } .brands__logo[src*="grundfos"] { height: 18px; } }
+.brands__logo[src*="rowa"] { height: 42px; }
+.brands__logo[src*="czerweny"] { height: 36px; }
+.brands__logo[src*="lowara"] { height: 26px; }
+@media (max-width: 760px) { .brands__logo[src*="rowa"] { height: 34px; } .brands__logo[src*="czerweny"] { height: 30px; } .brands__logo[src*="lowara"] { height: 22px; } }
+.brands__logo[src*="gamma"] { height: 22px; }
+
+/* Marcas: tamaños parejos */
+.brands__logo[src*="weg"] { height: 36px; }
+.brands__logo[src*="siemens"] { height: 24px; }
+.brands__logo[src*="czerweny"] { height: 32px; }
+.brands__logo[src*="gamma"] { height: 26px; }
+.brands__logo[src*="motormech"] { height: 36px; }
+@media (max-width: 760px) {
+  .brands__logo[src*="weg"] { height: 30px; }
+  .brands__logo[src*="siemens"] { height: 20px; }
+  .brands__logo[src*="czerweny"] { height: 27px; }
+  .brands__logo[src*="gamma"] { height: 22px; }
+  .brands__logo[src*="motormech"] { height: 30px; }
+}
+
+/* Marcas de bombas: tamaños parejos */
+.brands__logo[src*="pedrollo"] { height: 26px; }
+.brands__logo[src*="grundfos"] { height: 24px; }
+.brands__logo[src*="rowa"] { height: 54px; }
+.brands__logo[src*="motorarg"] { height: 52px; }
+.brands__logo[src*="czerweny"] { height: 32px; }
+.brands__logo[src*="lowara"] { height: 28px; }
+.brands__logo[src*="franklin"] { height: 26px; }
+@media (max-width: 760px) {
+  .brands__logo[src*="pedrollo"] { height: 22px; }
+  .brands__logo[src*="grundfos"] { height: 20px; }
+  .brands__logo[src*="rowa"] { height: 44px; }
+  .brands__logo[src*="motorarg"] { height: 42px; }
+  .brands__logo[src*="lowara"] { height: 24px; }
+  .brands__logo[src*="franklin"] { height: 22px; }
+}
+.brands__logo[src*="franklin"] { height: 50px; }
+@media (max-width: 760px) { .brands__logo[src*="franklin"] { height: 42px; } }
+
+/* Botón flotante de WhatsApp: se expande hacia la izquierda con el texto */
+.wa-float { width: auto; min-width: 58px; height: 58px; border-radius: 999px; display: inline-flex; flex-direction: row-reverse; align-items: center; justify-content: center; padding: 0 16px; text-decoration: none; }
+.wa-float::after { border-radius: 999px; }
+.wa-float__txt { max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; font: 700 15px/1 var(--display); letter-spacing: -.005em; transition: max-width .35s var(--ease), opacity .25s var(--ease), margin .35s var(--ease); }
+.wa-float:hover .wa-float__txt, .wa-float:focus-visible .wa-float__txt, .wa-float.is-peek .wa-float__txt { max-width: 190px; opacity: 1; margin-right: 10px; }
+@media (max-width: 760px) { .wa-float { right: 16px; bottom: 16px; height: 54px; min-width: 54px; padding: 0 14px; } }
+@media (prefers-reduced-motion: reduce) { .wa-float__txt { transition: none; } }
+
+/* Hero: botón de WhatsApp con icono; en celular botones compactos (padding lateral 16px, ancho según contenido) */
+body .hero-split .hs-btn .hs-btn-icon { flex: none; }
+@media (max-width: 600px) {
+  body .hero-split .hs-actions { align-self: center; align-items: center; gap: 16px; }
+  body .hero-split .hs-btn { width: auto; min-height: 48px; height: 48px; padding: 0 16px; font-size: 15px; }
+}
+/* Flotante de WhatsApp: aparece desde Nosotros, margen de 24px en escritorio */
+@media (min-width: 761px) { .wa-float { right: 24px; bottom: 24px; } }
+
+/* Hero celular: botones del mismo ancho y bajada en dos líneas separadas (servicios / productos) */
+@media (max-width: 600px) {
+  body .hero-split .hs-actions { width: fit-content; max-width: 100%; align-self: center; align-items: stretch; }
+  body .hero-split .hs-btn { width: 100%; }
+  body .hero-split .hs-lead span { display: block; }
+  body .hero-split .hs-lead span + span { margin-top: 8px; }
+}
+
+/* Hero celular: más aire entre las líneas del título */
+@media (max-width: 600px) { body .hero-split .hs-title { line-height: 1.15; } }
+
+/* Servicios: Motores destacada en escritorio, Bombas y Máquinas secundarias; tablet y celular: apiladas */
+#servicios .svc { grid-template-columns: 1fr; gap: 16px; }
+#servicios .svc__item { display: grid; align-content: end; min-height: 288px; border-radius: 24px; }
+@media (min-width: 1100px) {
+  #servicios .svc { grid-template-columns: 1.25fr 1fr; gap: 24px; }
+  #servicios #svc-motores { grid-row: 1 / 3; min-height: 552px; }
+  #servicios #svc-bombas, #servicios #svc-maquinas { min-height: 264px; }
+}
+
+/* Servicios: tarjetas con foto de taller (Motores y Bombas) cubriendo toda la tarjeta, motor hacia la derecha, degradé largo hacia el texto; flecha pegada al texto del botón */
+#servicios .svc__item--photo { position: relative; overflow: hidden; isolation: isolate; background: rgb(25, 25, 22); box-shadow: none !important; }
+#servicios .svc__item--photo::before { display: none !important; }
+#servicios .svc__item--photo > .svc__icon { display: none; }
+#servicios .svc__item--photo::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(243, 242, 238, .1); pointer-events: none; z-index: 2; transition: box-shadow .45s var(--ease); }
+#servicios .svc__item--photo:hover::after, #servicios .svc__item--photo.is-live::after { box-shadow: inset 0 0 0 1px rgba(92, 157, 255, .8); }
+#servicios .svc__photo { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+#servicios .svc__photo img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transform: translate(var(--tx, 120px), var(--ty, -56px)) scale(var(--s, 1.4)); transform-origin: 50% 45%; transition: transform .8s var(--ease); }
+#servicios .svc__item--photo:hover .svc__photo img { transform: translate(var(--tx, 120px), var(--ty, -56px)) scale(var(--sh, 1.5)); }
+#servicios .svc__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25, 25, 22, 0) 0%, rgba(25, 25, 22, .1) 30%, rgba(25, 25, 22, .55) 55%, rgba(25, 25, 22, .9) 75%, rgb(25, 25, 22) 100%); }
+#servicios .svc__btn { justify-self: start; justify-content: flex-start; gap: 8px; width: auto; }
+@media (max-width: 1099px) { #servicios .svc__item--photo { min-height: 472px !important; } }
+@media (min-width: 761px) and (max-width: 1099px) {
+  #servicios .svc__photo img { transform: translate(96px, -8px) scale(1.25); }
+  #servicios .svc__item--photo:hover .svc__photo img { transform: translate(96px, -8px) scale(1.32); }
+}
+@media (max-width: 760px) {
+  #servicios .svc__photo img { position: absolute; width: 175%; max-width: none; height: auto; left: -34%; top: -56px; transform: none; }
+  #svc-motores .svc__photo img { top: -80px; }
+  #servicios .svc__item--photo:hover .svc__photo img { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { #servicios .svc__photo img { transition: none; } }
+
+@media (min-width: 1100px) {
+  #svc-bombas .svc__photo img { --tx: 56px; --ty: 32px; --s: 1.2; --sh: 1.3; transform-origin: 60% 50%; }
+  #svc-bombas .svc__photo::after { background: linear-gradient(90deg, rgba(25, 25, 22, .92) 0%, rgba(25, 25, 22, .55) 38%, rgba(25, 25, 22, 0) 70%), linear-gradient(180deg, rgba(25, 25, 22, 0) 45%, rgba(25, 25, 22, .85) 100%); }
+}
+
+/* Servicios en tablet y celular: tarjetas una debajo de otra, sin superponerse */
+@media (max-width: 1024px) {
+  #servicios .svc__item { position: relative; top: auto; transform: none !important; filter: none !important; will-change: auto; }
+}
+@media (max-width: 1099px) { #servicios .svc { grid-auto-rows: auto; align-items: start; } }
+
+/* Bombas: foto de taller 16:9, bomba a la derecha y completa */
+#servicios .svc__photo { container-type: size; }
+#servicios #svc-bombas .svc__photo img { position: absolute; max-width: none; height: auto; object-fit: initial; transform: none; transform-origin: 59.5% 47.5%; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
+#servicios #svc-bombas:hover .svc__photo img { transform: scale(1.08); }
+@media (min-width: 1100px) { #servicios #svc-bombas .svc__photo img { width: 130cqw; left: -0.9cqw; top: -11cqw; } #servicios #svc-bombas p { max-width: 24ch; } @media (min-width:0) { #servicios #svc-bombas .svc__photo img { } } }
+@media (min-width: 761px) and (max-width: 1099px) { #servicios #svc-bombas .svc__photo img { width: 170cqw; left: -36.5cqw; top: -19.1cqw; } }
+@media (max-width: 760px) { #servicios #svc-bombas .svc__photo img { width: 234cqw; left: -83.7cqw; top: -20.3cqw; } #servicios #svc-bombas:hover .svc__photo img { transform: none; } }
+
+/* Hero celular: botones más anchos (hasta 320px) y de 56px de alto, del mismo ancho */
+@media (max-width: 600px) {
+  body .hero-split .hs-actions { width: min(100%, 320px); align-self: center; }
+  body .hero-split .hs-btn { width: 100%; min-height: 56px; height: 56px; padding: 0 24px; font-size: 16px; justify-content: center; }
+}
+
+/* Máquinas: taladro en uso (foto de taller), herramienta hacia la derecha */
+#servicios #svc-maquinas .svc__photo img { position: absolute; max-width: none; height: auto; object-fit: initial; transform: none; transform-origin: 75% 45%; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); }
+#servicios #svc-maquinas:hover .svc__photo img { transform: scale(1.08); }
+@media (min-width: 1100px) {
+  #servicios #svc-maquinas .svc__photo img { width: 100cqw; left: 0; top: 0; -webkit-mask-image: none; mask-image: none; }
+  #servicios #svc-maquinas p { max-width: 24ch; }
+}
+@media (min-width: 761px) and (max-width: 1099px) { #servicios #svc-maquinas .svc__photo img { width: 150cqw; left: -31cqw; top: -14.4cqw; -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%); mask-image: linear-gradient(180deg, #000 60%, transparent 100%); } }
+@media (max-width: 760px) { #servicios #svc-maquinas .svc__photo img { width: 150cqw; left: -43cqw; top: -7.4cqw; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); } #servicios #svc-maquinas:hover .svc__photo img { transform: none; } }
+
+#servicios .svc__photo picture { display: contents; }
+/* Opiniones: corte limpio (sin velo) */
+.imc__mask{display:none!important}
+/* Opiniones mobile: lista vertical */
+@media (max-width:760px){
+  .imc-rows{gap:16px}
+  .imc__viewport{overflow:visible}
+  .imc__track{display:grid;grid-template-columns:minmax(0,1fr);width:100%;gap:16px;transform:none!important}
+  .imc__card,.imc__card--wide{width:100%;max-width:none;padding:24px}
+  .imc__card[aria-hidden="true"],.imc__card:nth-child(n+4){display:none}
+  @supports (animation-timeline:view()){
+    @media (prefers-reduced-motion:no-preference){
+      .imc__card{animation:imc-in linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+      @keyframes imc-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    }
+  }
+}
+/* FAQ: sin brillo, abierta con marco azul */
+#faq.tone-dark .faq__item,#faq.tone-dark .faq__item.is-open{background:#191916!important}
+#faq.tone-dark .faq__item.is-open{border-color:#0166FC!important;box-shadow:none!important}
