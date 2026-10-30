@@ -2472,6 +2472,65 @@ body .hero-split .hs-btn .hs-btn-icon { flex: none; }
 }
 /* FAQ: sin brillo, abierta con marco azul */
 #faq.tone-dark .faq__item,#faq.tone-dark .faq__item.is-open{background:#191916!important}
-#faq.tone-dark .faq__item.is-open{border-color:#0166FC!important;box-shadow:none!important}
+#faq.tone-dark .faq__item.is-open{border-color:#5C9DFF!important;box-shadow:none!important}
 /* Opiniones mobile: margen lateral de 16px como el resto de las tarjetas */
 @media (max-width:760px){.imc-rows{padding-inline:16px;box-sizing:border-box}}
+
+/* Páginas internas: hero con el mismo diseño que la home, más bajo */
+.hero-split .hs-title .hs-inl{display:inline}
+body .hero-split.hero-split--page{min-height:0;padding-top:152px;padding-bottom:200px}
+@media (min-width:1100px){body .hero-split.hero-split--page{padding-top:184px;padding-bottom:208px}}
+@media (max-width:600px){body .hero-split.hero-split--page{padding-top:128px;padding-bottom:160px}}
+
+/* Otros servicios (subpáginas): mismo diseño con foto que el Home, dos tarjetas parejas */
+#servicios.otros .svc { grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 1100px) {
+  #servicios.otros .svc { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  #servicios.otros .svc__item, #servicios.otros #svc-motores, #servicios.otros #svc-bombas, #servicios.otros #svc-maquinas { grid-row: auto; min-height: 472px; }
+}
+/* Otros servicios: foto de Máquinas cubre toda la tarjeta, taladro hacia la derecha */
+@media (min-width: 761px) {
+  #servicios.otros #svc-maquinas .svc__photo img { width: auto; height: 100cqh; left: auto; right: 0; top: 0; -webkit-mask-image: none; mask-image: none; }
+}
+@media (max-width: 760px) {
+  #servicios.otros #svc-maquinas .svc__photo img { width: 190cqw; left: -80cqw; top: -2cqw; }
+}
+/* Otros servicios: todas las descripciones ocupan dos líneas, así los títulos quedan alineados */
+#servicios.otros #svc-motores p, #servicios.otros #svc-bombas p, #servicios.otros #svc-maquinas p { max-width: none; min-height: 3.2em; }
+/* Bombas: foto más cerca en escritorio (igual que en tablet) */
+@media (min-width: 1100px) {
+  #servicios.otros #svc-bombas .svc__photo img { width: 170cqw; left: -36.5cqw; top: -14cqw; }
+}
+/* Motores: foto con el mismo encuadre que en tablet y celular */
+@media (min-width: 1100px) {
+  #servicios.otros #svc-motores .svc__photo img { transform: translate(24px, -36px) scale(1.1); }
+  #servicios.otros #svc-motores:hover .svc__photo img { transform: translate(24px, -36px) scale(1.16); }
+}
+#faq.tone-dark .faq__icon::before,#faq.tone-dark .faq__icon::after,#faq.tone-dark .faq__item.is-open .faq__icon::before,#faq.tone-dark .faq__item.is-open .faq__icon::after{background:#5C9DFF}
+
+/* =========================================================
+   Guía de color v1: todo en color pleno, sin degradados ni glow.
+   Azul de marca #0166FC · hover #0052D1 · suave #5C9DFF (solo sobre oscuro)
+   Tinte #EEF4FF · verde WhatsApp #25D366
+   ========================================================= */
+:root { --grad: #0166FC; --grad-btn: #0166FC; --grad-wa: #25D366; --volt-text: #0052D1; }
+.btn--volt, .hero--dark .btn--volt, .pc__cta { background: #0166FC; background-size: auto; box-shadow: none; transition: background-color .2s var(--ease), transform .35s var(--ease); }
+.btn--volt:hover, .hero--dark .btn--volt:hover, .pc__cta:hover { background: #0052D1; box-shadow: none; }
+.svc__btn:hover, .section--ink .svc__btn:hover, .svc--light .svc__btn:hover,
+.svc__item:hover .svc__btn, .section--ink .svc__item:hover .svc__btn, .svc--light .svc__item:hover .svc__btn { background: #0166FC; box-shadow: none; }
+.btn--wa, .btn--wa:hover, .contact.is-lit .btn--wa, .contact.is-lit .btn--wa:hover { background: #25D366; box-shadow: none; }
+.wa-float, .lights-on .wa-float { background: #25D366; box-shadow: none; }
+.hstep.is-active .hstep__num { background: #0166FC; box-shadow: none; }
+.ct-ico, .hw.is-on .hw__ico { background: #0166FC; box-shadow: none; }
+.how__steps::after { background: #0166FC; }
+.hw-list::after { background: #0166FC; }
+@media (max-width: 760px) { .hw-list::after { background: #0166FC; } }
+#contacto .ct-row--primary, #contacto .ct__ov { background: #0166FC; box-shadow: none; }
+#contacto a.ct-row--primary:hover { background: #0052D1; }
+.hero__title strong, .hero--dark .hero__title strong { color: #5C9DFF; -webkit-text-fill-color: #5C9DFF; }
+.pill::after, .label.pill::after { display: none; }
+.mq, .pc__media { background: #EEF4FF; }
+
+/* Íconos de interfaz: un solo grosor visible (1,5 px), sin importar el tamaño */
+:is(.hcat, .pc__cta, .wa-float, .hs-wa, .about2__ico, .ct-ico, .ct__go, .hw__ico, .mq__ico, .hs-btn) svg *,
+svg.svc__arrow *, svg.hs-btn-icon *, li > svg * { stroke-width: 1.5px; vector-effect: non-scaling-stroke; }

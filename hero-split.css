@@ -13,7 +13,7 @@
   --hs-line: rgba(243, 242, 238, .24);
   --hs-blue: #0166FC;
   --hs-blue-hover: #0052D1;
-  --hs-blue-active: #0046B3;
+  --hs-blue-active: #0052D1;
   --hs-blue-light: #5C9DFF;
   --hs-wa: #25D366;
   --hs-wa-hover: #1DB954;
@@ -87,7 +87,7 @@
 }
 .hero-split .hs-title span { display: block; }
 .hero-split .hs-accent {
-  color: var(--hs-blue);
+  color: var(--hs-blue-light);
   font-weight: 700;
 }
 
