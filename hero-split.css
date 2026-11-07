@@ -8,8 +8,8 @@
 .hero-split {
   --hs-bg: #0E0E0C;
   --hs-fg: #F3F2EE;
-  --hs-fg-2: rgba(243, 242, 238, .74);
-  --hs-fg-3: rgba(243, 242, 238, .64);
+  --hs-fg-2: #E4E3DE;
+  --hs-fg-3: #C4C3BC;
   --hs-line: rgba(243, 242, 238, .24);
   --hs-blue: #0166FC;
   --hs-blue-hover: #0052D1;
@@ -116,7 +116,7 @@
   min-height: 52px;
   padding: 0 24px;
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: 8px;
   font: 500 16px/1 var(--hs-sans);
   letter-spacing: -0.005em;
   text-decoration: none;

@@ -2540,3 +2540,48 @@ svg.svc__arrow *, svg.hs-btn-icon *, li > svg * { stroke-width: 1.5px; vector-ef
 .hw.is-on .hw__ico { color: #0166FC; }
 .hw__ico::after, .hw.is-on .hw__ico::after { display: none; animation: none; }
 @media (max-width: 760px) { .hw__ico { font-size: 20px; } }
+
+/* =========================================================
+   Radios con criterio: cuanto más grande la caja, más grande el radio
+   · Contenedores grandes (fotos, productos, mapa): 24px
+   · Tarjetas, filas y paneles: 16px
+   · Controles (botones, toggle, avatares): 8px
+   · Pills (tags, chips) y círculos: totalmente redondos
+   ========================================================= */
+.svc__item, #servicios .svc__item, #servicios.otros .svc__item, .pc, .pc-more, .rp, .ct__map { border-radius: 24px; }
+.about2__card, #nosotros .about2__card, .imc__card, .ct__ov, .ct-row, #contacto .ct-row, .faq__item, .acc, .hcat, .pc__media,
+.mq, .acc__b > .mq { border-radius: 16px; }
+.mq.mq--gt, .mq.mq--list { border-radius: 0; }
+.btn, .btn--volt, .btn--wa, .btn--outline, .hero-split .hs-btn, .ct__go, .nav__toggle, .skip-link, .imc__av { border-radius: 8px; }
+@media (max-width: 760px) { .svc__item, #servicios .svc__item { border-radius: 16px; } }
+
+/* Tags de sección: solo el título, en mayúscula, sin cápsula */
+.pill, .pill.pill--plain, .label.pill, .tone-light .pill, .tone-dark .pill, .section--ink .pill, .section--ink.tone-light .pill, .hero--dark .pill, .ihero .pill, .contact.is-lit .pill, .section__head .label.pill, .section__head .label.pill.pill--plain {
+  background: none; border: 0; box-shadow: none; border-radius: 0; height: auto; padding: 0; margin: 0 0 8px;
+  font-family: var(--sans); font-weight: 700; font-size: 14px; line-height: 1.2; letter-spacing: .2em; text-transform: uppercase;
+  color: #0052D1; overflow: visible;
+}
+.section--ink .label.pill, .tone-dark .label.pill, .hero--dark .label.pill, .ihero .label.pill, .section--ink .label.pill.pill--plain, .tone-dark .label.pill.pill--plain, .section--ink .section__head .label.pill { color: #5C9DFF; }
+.section--ink.tone-light .label.pill, .tone-light .label.pill, .section--ink.tone-light .label.pill.pill--plain, .tone-light .label.pill.pill--plain { color: #0052D1; }
+.contact.is-lit .label.pill, .contact.is-lit .label.pill.pill--plain { color: #fff; }
+.pill .pill__txt { letter-spacing: inherit; text-transform: inherit; }
+#nosotros .about2__body .pill, #servicios .section__head .pill { margin: 0 0 8px; }
+@media (max-width: 760px) { .pill, .pill.pill--plain { font-size: 13px; letter-spacing: .16em; } }
+
+/* Contraste sobre fondo oscuro: el texto de lectura pasa de gris apagado a un tono claro (7:1 o más; hoy entre 10:1 y 13:1) */
+:root {
+  --on-dark-1: #E4E3DE;   /* texto de lectura: párrafos, listas, bajadas */
+  --on-dark-2: #C4C3BC;   /* texto secundario: etiquetas, créditos, datos chicos */
+  --hs-fg-2: #E4E3DE;
+  --hs-fg-3: #C4C3BC;
+}
+.hero--dark .hero__lead, .hero-split .hs-lead,
+.section--ink .svc__item p, #nosotros .about2__desc, #servicios .svc .svc__item p, #productos .svc .svc__item p,
+.section--ink .center-head__sub, .reviews.section--ink .center-head__sub, #productos .center-head__sub, #servicios .section__head .center-head__sub,
+.pstep p, .imc__desc, .pc-more p, .section--ink .detail p, .rp li,
+.tone-dark .faq__a p, .tone-dark .faq__item.is-open .faq__a p, .tone-dark .center-head__sub, #faq .center-head__sub,
+.footer__col li, .footer__col a, .footer--grid .footer__top, .footer__credit, .footer__legal, .footer, .mmenu__list > a, .mm__toggle { color: var(--on-dark-1); }
+.section--ink .label, .imc__role, .switch__label, .info dt, .brands--dark .brands__label, .brands--dark .brands__item, .ct-lbl { color: var(--on-dark-2); }
+.tone-light .imc__role, #contacto .ct-lbl { color: var(--muted); }
+.footer__col a:hover, .footer__top:hover, .footer--grid .footer__top:hover { color: #5C9DFF; }
+.footer__credit strong { color: var(--paper); }

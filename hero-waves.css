@@ -26,12 +26,9 @@
   background: linear-gradient(90deg, #0E0E0C 0%, #08162E 100%);
 }
 
-/* Fallback sin WebGL: mismo degradado + un brillo azul abajo a la derecha */
+/* Fallback sin WebGL: el mismo fondo, sin halos de luz (la luz la ponen las líneas) */
 .hw-canvas.hw-fallback {
-  background:
-    radial-gradient(70% 55% at 85% 100%, rgba(1, 102, 252, 0.22) 0%, rgba(1, 102, 252, 0) 70%),
-    radial-gradient(40% 30% at 72% 82%, rgba(92, 157, 255, 0.12) 0%, rgba(92, 157, 255, 0) 70%),
-    linear-gradient(90deg, #0E0E0C 0%, #08162E 100%);
+  background: linear-gradient(90deg, #0E0E0C 0%, #08162E 100%);
 }
 
 /* Overlay de contraste: oscuro (60%) en la zona del texto → transparente */
