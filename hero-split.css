@@ -18,7 +18,7 @@
   --hs-wa: #25D366;
   --hs-wa-hover: #1DB954;
   --hs-sans: var(--sans, "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
-  --hs-display: var(--display, "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  --hs-display: var(--display, "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
   --hs-mono: var(--sans, "Inter", system-ui, sans-serif);
 
   position: relative;

@@ -964,11 +964,11 @@ ul, ol { list-style: none; }
 .footer__credit { color: rgba(243,242,238,.62); }
 .footer__credit strong { color: var(--paper); font-weight: 600; }
 /* ============================================================
-   TIPOGRAFÍA: Host Grotesk (titulares) + Plus Jakarta Sans (textos)
+   TIPOGRAFÍA: Host Grotesk (titulares) + Red Hat Text (textos)
    ============================================================ */
 :root {
   --display: "Host Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sans: "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: var(--sans);
 }
 body { font-weight: 400; }
@@ -1044,11 +1044,11 @@ h1, h2, h3, .hero__title { font-family: var(--display); }
 .h2, .hstep h3 { font-weight: 600; }
 /* ============================================================
    TIPOGRAFÍA v4
-   Títulos: Plus Jakarta Sans (hero/sección 600-700, tarjetas 600)
+   Títulos: Red Hat Text (hero/sección 600-700, tarjetas 600)
    Textos y contacto: Inter 400 · Etiquetas, botones y links: Inter 500
    ============================================================ */
 :root {
-  --display: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --display: "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: var(--sans);
 }
@@ -2288,10 +2288,10 @@ main:focus { outline: none; }
 }
 @media (prefers-reduced-motion: reduce) { .acc__h i { transition: none; } }
 
-/* Tipografía unificada: Plus Jakarta Sans en todo el sitio */
+/* Tipografía: títulos en Red Hat Display, texto corrido en Red Hat Text */
 :root {
-  --display: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --display: "Red Hat Display", "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sans: "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: var(--sans);
 }
 @media (max-width: 600px) {
@@ -2534,3 +2534,9 @@ body .hero-split.hero-split--page{min-height:0;padding-top:152px;padding-bottom:
 /* Íconos de interfaz: un solo grosor visible (1,5 px), sin importar el tamaño */
 :is(.hcat, .pc__cta, .wa-float, .hs-wa, .about2__ico, .ct-ico, .ct__go, .hw__ico, .mq__ico, .hs-btn) svg *,
 svg.svc__arrow *, svg.hs-btn-icon *, li > svg * { stroke-width: 1.5px; vector-effect: non-scaling-stroke; }
+
+/* Cómo trabajamos: número con jerarquía en lugar de ícono en cuadradito */
+.hw__ico, .hw.is-on .hw__ico { background: #fff; border-radius: 0; box-shadow: none; transform: none; color: #6B6A64; font: 700 24px/1 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; transition: color .5s var(--ease); }
+.hw.is-on .hw__ico { color: #0166FC; }
+.hw__ico::after, .hw.is-on .hw__ico::after { display: none; animation: none; }
+@media (max-width: 760px) { .hw__ico { font-size: 20px; } }
